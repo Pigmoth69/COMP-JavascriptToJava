@@ -1,4 +1,4 @@
-import Parser.*;
+import Parser.Parser;
 
 public class Main {
 
@@ -6,7 +6,9 @@ public class Main {
 
 
        Parser parser = new Parser("teste.js");
-       System.out.println(parser.getCode());
+      System.out.println(parser.getCode());
+
+
         /*ScriptEngineManager engineManager = new ScriptEngineManager();
         ScriptEngine engine = engineManager.getEngineByName("nashorn");
         System.out.println("Opening File...");
