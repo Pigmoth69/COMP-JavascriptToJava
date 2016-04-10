@@ -4,9 +4,8 @@ public class Main {
 
     public static void main(String[] args) throws Throwable {
 
-
-       Parser parser = new Parser("teste.js");
-      System.out.println(parser.getCode());
+        Parser parser = new Parser("teste.js");
+        System.out.println(parser.getCode());
 
 
         /*ScriptEngineManager engineManager = new ScriptEngineManager();

@@ -93,7 +93,7 @@ public class Parser {
 
     public void parseFile() throws ScriptException, JSONException {
         System.out.println("Parsing file... Please wait.");
-       String parseString = new String("function getCode(){var syntax = esprima.parse('"+code+"'); return JSON.stringify(syntax);}");
+        String parseString = new String("function getCode(){var syntax = esprima.parse('"+code+"'); return JSON.stringify(syntax);}");
         engine.eval(parseString);
         code = (String)engine.eval("getCode();");
         obj = new JSONObject(code);
