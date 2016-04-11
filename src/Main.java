@@ -1,4 +1,8 @@
 import Parser.Parser;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.implementations.SingleGraph;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Main {
 
@@ -7,6 +11,8 @@ public class Main {
         Parser parser = new Parser("teste.js");
         System.out.println(parser.getCode());
 
+        JSONObject json = parser.getObj();
+        buildGraph(json).display();
 
         /*ScriptEngineManager engineManager = new ScriptEngineManager();
         ScriptEngine engine = engineManager.getEngineByName("nashorn");
@@ -32,6 +38,93 @@ public class Main {
 
         graph.display();*/
 
+
+    }
+
+
+    public static Graph buildGraph(JSONObject json) {
+
+        Graph graph = new SingleGraph("");
+
+        recursive(graph, json);
+
+        return graph;
+
+    }
+
+
+    public static void recursive(Graph graph, JSONObject json) {
+
+        String type;
+
+        try {
+            type = json.getString("type");
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        graph.addNode(type).setAttribute("ui.label", type);
+
+        switch (type) {
+
+            case "Program":
+
+                try {
+                    recursive(graph, json.getJSONArray("body").getJSONObject(0));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    return;
+                }
+
+                break;
+
+            case "VariableDeclaration":
+
+                try {
+                    recursive(graph, json.getJSONArray("declarations").getJSONObject(0));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                break;
+
+            case "VariableDeclarator":
+
+                try {
+                    recursive(graph, json.getJSONObject("id"));
+                    recursive(graph, json.getJSONObject("init"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                break;
+
+            case "Identifier":
+
+                try {
+                    String name = json.getString("name");
+                    graph.addNode(name).setAttribute("ui.label", name);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                break;
+
+            case "Literal":
+
+                try {
+                    String value = String.valueOf(json.getInt("value"));
+                    graph.addNode(value).setAttribute("ui.label", value);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                break;
+
+            default: break;
+
+        }
 
     }
 
