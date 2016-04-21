@@ -12,7 +12,7 @@ public class Main {
         System.out.println(parser.getCode());
 
         JSONObject json = parser.getObj();
-        buildGraph(json).display(); 
+        buildGraph(json).display();
         /*System.out.println(parser.getObj().getJSONArray("body").length());
         System.out.println(parser.getObj().getJSONArray("body").get(0));*/
         /*String[] names = JSONObject.getNames(parser.getObj());
