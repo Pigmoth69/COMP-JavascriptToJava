@@ -1,11 +1,13 @@
 package ESTree.Statements.Loops;
 
+import ESTree.Declarations.VariableDeclaration;
+import ESTree.Expressions.Expression;
 import ESTree.Statements.Statement;
 
 /**
  * Created by danny on 23/04/2016.
  */
-public class ForStatement implements Statement{
+public class ForStatement extends Statement {
     private String type = "ForStatement";
     private Object init; //init: VariableDeclaration | Expression | null;
     private Expression test;

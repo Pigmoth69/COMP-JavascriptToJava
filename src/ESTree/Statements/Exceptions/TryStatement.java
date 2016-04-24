@@ -6,7 +6,7 @@ import ESTree.Statements.Statement;
 /**
  * Created by danny on 23/04/2016.
  */
-public class TryStatement implements Statement {
+public class TryStatement extends Statement {
     private String type = "TryStatement";
     private BlockStatement block;
     private CatchClause handler;

@@ -6,7 +6,7 @@ import ESTree.Statements.Statement;
 /**
  * Created by danny on 23/04/2016.
  */
-public class LabeledStatement implements Statement{
+public class LabeledStatement extends Statement {
     private String type = "LabeledStatement";
     private Identifier label;
     private Statement body;

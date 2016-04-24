@@ -1,11 +1,12 @@
 package ESTree.Literal;
 
+import ESTree.Expressions.Expression;
 import jdk.nashorn.internal.runtime.regexp.RegExp;
 
 /**
  * Created by danny on 21/04/2016.
  */
-public class Literal implements  Expression{
+public class Literal extends Expression {
     private String type = "Literal";
     private String valueType;/*string | boolean | null | number | RegExp*/
     private String value1;
