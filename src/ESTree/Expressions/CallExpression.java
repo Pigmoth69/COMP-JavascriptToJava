@@ -11,6 +11,7 @@ public class CallExpression extends Expression {
     private ArrayList<Expression> arguments;
 
     public CallExpression(Expression callee, ArrayList<Expression> arguments){
+        super("CallExpression");
         this.callee=callee;
         this.arguments=arguments;
     }

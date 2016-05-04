@@ -14,6 +14,7 @@ public class SwitchStatement extends Statement {
     private ArrayList<SwitchCase> cases;
 
     public SwitchStatement(Expression disciminent,ArrayList<SwitchCase> cases){
+        super("SwitchStatement");
         this.disciminent=disciminent;
         this.cases = cases;
     }

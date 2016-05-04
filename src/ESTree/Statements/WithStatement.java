@@ -11,6 +11,7 @@ public class WithStatement extends Statement {
     private Statement body;
 
     public WithStatement(Expression object,Statement body){
+        super("WithStatement");
         this.object=object;
         this.body = body;
     }

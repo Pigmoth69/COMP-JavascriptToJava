@@ -11,6 +11,7 @@ public class ReturnStatement extends Statement {
     private Expression argument;
 
     public ReturnStatement(Expression argument){
+        super("ReturnStatement");
         this.argument=argument;
     }
 }

@@ -12,6 +12,7 @@ public class DoWhileStatement extends Statement {
     private Expression test;
 
     public DoWhileStatement(Statement body,Expression test){
+        super("DoWhileStatement");
         this.body=body;
         this.test=test;
     }

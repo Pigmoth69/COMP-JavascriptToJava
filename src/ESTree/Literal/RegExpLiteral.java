@@ -3,7 +3,7 @@ package ESTree.Literal;
 /**
  * Created by danny on 23/04/2016.
  */
-public class RegExpLiteral implements Literal{
+public class RegExpLiteral extends Literal{
     private String pattern;
     private String flags;
 

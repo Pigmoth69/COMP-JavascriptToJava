@@ -12,6 +12,7 @@ public class WhileStatement extends Statement {
     private Statement body;
 
     public WhileStatement(Expression test,Statement body){
+        super("WhileStatement");
         this.test=test;
         this.body=body;
     }

@@ -10,6 +10,7 @@ public class ObjectExpression extends Expression {
     private ArrayList<Property> properties;
 
     public ObjectExpression(ArrayList<Property> properties){
+        super("ObjectExpression");
         this.properties=properties;
     }
 }

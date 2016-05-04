@@ -7,7 +7,7 @@ public class NewExpression extends CallExpression {
     private String type = "NewExpression";
 
     public NewExpression(){
-        super(null,null);
+        super(null,null);//is it null?..
 
     }
 }

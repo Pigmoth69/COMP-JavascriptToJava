@@ -12,6 +12,7 @@ public class LabeledStatement extends Statement {
     private Statement body;
 
     public LabeledStatement(Identifier label, Statement body){
+        super("LabeledStatement");
         this.label=label;
         this.body = body;
     }

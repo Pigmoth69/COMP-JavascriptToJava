@@ -10,6 +10,7 @@ public class BlockStatement extends Statement {
     private ArrayList<Statement> body;
 
     public BlockStatement(ArrayList<Statement> body){
+        super("BlockStatement");
         this.body = body;
     }
 }

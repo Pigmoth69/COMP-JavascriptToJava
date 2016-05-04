@@ -10,6 +10,7 @@ public class ArrayExpression extends Expression {
     private ArrayList<Expression> elements;
 
     public ArrayExpression(ArrayList<Expression> elements){
+        super("ArrayExpression");
         this.elements=elements;
     }
 }

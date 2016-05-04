@@ -7,6 +7,7 @@ public class EmptyStatement extends Statement {
     private String type = "EmptyStatement";
 
     public EmptyStatement(){
+        super("EmptyStatement");
 
     }
 }

@@ -15,6 +15,7 @@ public class ForStatement extends Statement {
     private Statement body;
 
     public ForStatement(Object o, Expression test,Expression update, Statement body){
+        super("ForStatement");
         if(o instanceof VariableDeclaration){
             init = (VariableDeclaration)o;
         }else if(o instanceof  Expression){

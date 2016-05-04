@@ -14,6 +14,9 @@ public class Literal extends Expression {
     private double value3;
     private RegExp value4;
 
+    public Literal() {
+        super("Literal");
+    }
 }
 /*
 * interface Literal <: Expression {

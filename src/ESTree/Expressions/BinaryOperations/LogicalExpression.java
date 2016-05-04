@@ -12,6 +12,7 @@ public class LogicalExpression extends Expression {
     private Expression right;
 
     public LogicalExpression(LogicalOperator operator, Expression left, Expression right){
+        super("LogicalExpression");
         this.operator=operator;
         this.left=left;
         this.right=right;

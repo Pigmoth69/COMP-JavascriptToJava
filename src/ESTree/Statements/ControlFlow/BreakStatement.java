@@ -11,6 +11,7 @@ public class BreakStatement extends Statement {
     private Identifier label;
 
     public BreakStatement(Identifier label){
+        super("BreakStatement");
         this.label=label;
     }
 }

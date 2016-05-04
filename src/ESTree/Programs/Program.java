@@ -13,7 +13,7 @@ public class Program extends Node {
     private ArrayList<Statement> statements;
 
     public Program(ArrayList<Statement> statements){
-        super(null,null);
+        super("Program");
         this.statements=statements;
     }
 }

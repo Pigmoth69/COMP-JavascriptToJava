@@ -2,7 +2,8 @@ package ESTree.Declarations;
 
 import ESTree.Expressions.Expression;
 import ESTree.NodeObjects.Node;
-import ESTree.Patterns.Pattern;
+
+import java.util.regex.Pattern;
 
 /**
  * Created by danny on 24/04/2016.
@@ -13,7 +14,7 @@ public class VariableDeclarator extends Node {
     private Expression init;
 
     public VariableDeclarator(Pattern id,Expression init){
-        super(null,null);
+        super("VariableDeclarator");
         this.id=id;
         this.init=init;
     }

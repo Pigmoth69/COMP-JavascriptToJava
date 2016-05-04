@@ -11,6 +11,7 @@ public class ContinueStatement extends Statement {
     private Identifier label;
 
     public ContinueStatement(Identifier label){
+        super("ContinueStatement");
         this.label= label;
     }
 }

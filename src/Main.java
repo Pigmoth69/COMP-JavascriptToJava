@@ -11,8 +11,8 @@ public class Main {
         Parser parser = new Parser("teste.js");
         System.out.println(parser.getCode());
 
-        JSONObject json = parser.getObj();
-        buildGraph(json).display();
+     /*   JSONObject json = parser.getObj();
+        buildGraph(json).display();*/
         /*System.out.println(parser.getObj().getJSONArray("body").length());
         System.out.println(parser.getObj().getJSONArray("body").get(0));*/
         /*String[] names = JSONObject.getNames(parser.getObj());
@@ -30,7 +30,7 @@ public class Main {
         engine.eval("function getCode(){var syntax = esprima.parse('var answer = 42'); return JSON.stringify(syntax);}");
         System.out.println(engine.eval("getCode();"));*/
 
-       /* Graph graph = new SingleGraph("Tutorial 1");
+       /* Graph.Graph graph = new SingleGraph("Tutorial 1");
 
         graph.addNode("A");
 

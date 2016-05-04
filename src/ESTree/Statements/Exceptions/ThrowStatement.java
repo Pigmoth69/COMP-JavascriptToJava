@@ -11,6 +11,7 @@ public class ThrowStatement extends Statement {
     private Expression argument;
 
     public ThrowStatement(Expression argument){
+        super("ThrowStatement");
         this.argument=argument;
     }
 }

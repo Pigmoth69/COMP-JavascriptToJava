@@ -7,6 +7,7 @@ public class DebuggerStatement extends Statement {
     private String type = "DebuggerStatement";
 
     public DebuggerStatement(){
+        super("DebuggerStatement");
 
     }
 }

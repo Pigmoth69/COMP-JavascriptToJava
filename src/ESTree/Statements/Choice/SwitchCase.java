@@ -15,7 +15,7 @@ public class SwitchCase extends Node {
     private ArrayList<Statement> consequent;
 
     public SwitchCase(Expression test,ArrayList<Statement> consequent){
-        super(null,null);
+        super("SwitchCase");
         this.test=test;
         this.consequent=consequent;
     }

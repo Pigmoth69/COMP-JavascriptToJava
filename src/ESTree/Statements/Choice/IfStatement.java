@@ -13,6 +13,7 @@ public class IfStatement extends Statement {
     private Statement alternate;
 
     public IfStatement(Expression test,Statement consequent,Statement alternate){
+        super("IfStatement");
         this.test = test;
         this.consequent=consequent;
         this.alternate=alternate;

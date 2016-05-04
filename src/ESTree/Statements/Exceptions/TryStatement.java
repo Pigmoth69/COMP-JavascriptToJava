@@ -13,6 +13,7 @@ public class TryStatement extends Statement {
     private BlockStatement finalizer;
 
     public TryStatement(BlockStatement block, CatchClause handler,BlockStatement finalizer){
+        super("TryStatement");
         this.block=block;
         this.handler=handler;
         this.finalizer= finalizer;

@@ -12,6 +12,7 @@ public class UpdateExpression extends Expression {
     private boolean prefix;
 
     public UpdateExpression(UpdateOperator operator, Expression argument,boolean prefix){
+        super("UpdateExpression");
         this.operator=operator;
         this.argument=argument;
         this.prefix=prefix;

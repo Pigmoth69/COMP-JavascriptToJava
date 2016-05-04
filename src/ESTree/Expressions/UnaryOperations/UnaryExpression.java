@@ -14,6 +14,7 @@ public class UnaryExpression extends Expression {
     private Expression argument;
 
     public UnaryExpression(UnaryOperator operator, boolean prefix, Expression argument){
+        super("UnaryExpression");
         this.operator=operator;
         this.prefix=prefix;
         this.argument=argument;

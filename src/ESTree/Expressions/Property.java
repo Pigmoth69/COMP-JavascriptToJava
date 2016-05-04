@@ -14,7 +14,7 @@ public class Property extends Node {
     private String kind;
 
     public Property(Object key,Expression value,String kind){
-        super(null,null);
+        super("Property");
         if(key instanceof Literal){
             this.key = (Literal)key;
         }else if(key instanceof Identifier){
