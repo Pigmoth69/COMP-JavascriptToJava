@@ -15,7 +15,7 @@ public class Function extends Node {
     private ArrayList<Pattern> params;
     private BlockStatement body;
     public Function(Identifier id,ArrayList<Pattern> params,BlockStatement body){
-        super(null);
+        super("FUNCTION");
         this.id = id;
         this.params=params;
         this.body = body;
