@@ -1,7 +1,6 @@
 package ESTree.Literal;
 
 import ESTree.Expressions.Expression;
-import jdk.nashorn.internal.runtime.regexp.RegExp;
 
 /**
  * Created by danny on 21/04/2016.
@@ -12,7 +11,7 @@ public class Literal extends Expression {
     private String value1;
     private boolean value2;
     private double value3;
-    private RegExp value4;
+    private RegExpLiteral value4;
 
     public Literal() {
         super("Literal");

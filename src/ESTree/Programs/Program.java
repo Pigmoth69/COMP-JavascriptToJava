@@ -10,10 +10,18 @@ import java.util.ArrayList;
  */
 public class Program extends Node {
     private String type = "Program";
-    private ArrayList<Statement> statements;
+    private ArrayList<Statement> body;
 
-    public Program(ArrayList<Statement> statements){
+    public Program(ArrayList<Statement> body){
         super("Program");
-        this.statements=statements;
+        this.body=body;
+    }
+
+    public ArrayList<Statement> getBody() {
+        return body;
+    }
+
+    public void setBody(ArrayList<Statement> body) {
+        this.body = body;
     }
 }

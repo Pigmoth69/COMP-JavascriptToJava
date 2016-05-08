@@ -1,21 +1,23 @@
 package ESTree.Declarations;
 
 import ESTree.Expressions.Expression;
+import ESTree.Identifier.Identifier;
+import ESTree.Literal.Literal;
 import ESTree.NodeObjects.Node;
-
-import java.util.regex.Pattern;
 
 /**
  * Created by danny on 24/04/2016.
  */
 public class VariableDeclarator extends Node {
     private String type = "VariableDeclarator";
-    private Pattern id;
+    private Identifier identifier;
+    private Literal literal;
     private Expression init;
 
-    public VariableDeclarator(Pattern id,Expression init){
+    public VariableDeclarator(Identifier identifier,Literal literal, Expression init){
         super("VariableDeclarator");
-        this.id=id;
+        this.identifier=identifier;
+        this.literal=literal;
         this.init=init;
     }
 }

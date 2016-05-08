@@ -20,7 +20,7 @@ public class Parser {
     private String code = new String();
     private ScriptEngineManager engineManager;
     private ScriptEngine engine;
-    private JSONObject obj;
+    private JSONObject codeObj;
     private JSONArray codeArray;
 
     public Parser(String filename) throws ScriptException, FileNotFoundException, JSONException {
@@ -50,12 +50,12 @@ public class Parser {
         this.code = code;
     }
 
-    public JSONObject getObj() {
-        return obj;
+    public JSONObject getCodeObj() {
+        return codeObj;
     }
 
-    public void setObj(JSONObject obj) {
-        this.obj = obj;
+    public void setObj(JSONObject codeObj) {
+        this.codeObj = codeObj;
     }
 
     public JSONArray getCodeArray() {
@@ -95,8 +95,7 @@ public class Parser {
         String parseString = new String("function getCode(){var syntax = esprima.parse('"+code+"'); return JSON.stringify(syntax);}");
         engine.eval(parseString);
         code = (String)engine.eval("getCode();");
-        obj = new JSONObject(code);
-        //falta o array
+        codeObj = new JSONObject(code);
     }
 
 }
