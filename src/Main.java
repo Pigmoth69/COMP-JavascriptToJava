@@ -8,8 +8,8 @@ public class Main {
         Parser parser = new Parser("teste.js");
         System.out.println("Code:");
         System.out.println(parser.getCodeObj());
-        ClassBuilder classBuilder = new ClassBuilder(parser.getCodeObj());
-        classBuilder.build();
+//        ClassBuilder classBuilder = new ClassBuilder(parser.getCodeObj());
+//        classBuilder.build();
 
 
         /*System.out.println(parser.getObj().getJSONArray("body").length());

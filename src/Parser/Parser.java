@@ -1,5 +1,8 @@
 package Parser;
 
+import com.google.common.base.Charsets;
+import com.google.common.io.Files;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,92 +13,108 @@ import javax.script.ScriptException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.Scanner;
+import java.io.IOException;
 
-/**
- * Created by danny on 09/04/2016.
- */
 public class Parser {
-    private File file;
-    private String code = new String();
-    private ScriptEngineManager engineManager;
+
+    private String       code;
     private ScriptEngine engine;
-    private JSONObject codeObj;
-    private JSONArray codeArray;
+    private JSONObject   codeObj;
+    private JSONArray    codeArray;
 
-    public Parser(String filename) throws ScriptException, FileNotFoundException, JSONException {
-        file = new File("Files/"+filename);
-        if(!file.exists()) {
-            System.err.println("File does not exists! It should be a JavaScript file contained in the folder Files!!");
-            return;
-        }
-        loadLibs();
-        loadFile();
+    public Parser(String filename) throws ScriptException, JSONException {
+
+        loadFile(filename);
+        loadEsprima();
         parseFile();
-    }
 
-    public File getFile() {
-        return file;
-    }
-
-    public void setFile(File file) {
-        this.file = file;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public JSONObject getCodeObj() {
         return codeObj;
     }
 
-    public void setObj(JSONObject codeObj) {
-        this.codeObj = codeObj;
-    }
+    private boolean loadEsprima() {
 
-    public JSONArray getCodeArray() {
-        return codeArray;
-    }
+        engine = new ScriptEngineManager().getEngineByName("nashorn");
 
-    public void setCodeArray(JSONArray codeArray) {
-        this.codeArray = codeArray;
-    }
-
-    public void loadLibs() throws FileNotFoundException, ScriptException {
-        engineManager = new ScriptEngineManager();
-        engine = engineManager.getEngineByName("nashorn");
         System.out.println("Opening Esprima.js...");
-        File lib = new File("Libs/Esprima/esprima.js");
-        if(!lib.exists())
-            System.err.println("Esprima lib does not exists!");
-        else
-            System.out.println("Esprima lib exists!");
-        engine.eval(new FileReader(lib));
+
+        try {
+
+            engine.eval(new FileReader("Libs/Esprima/esprima.js"));
+
+        } catch (ScriptException | FileNotFoundException e) {
+
+            e.printStackTrace();
+            return false;
+
+        }
+
         System.out.println("Esprima.js loaded!");
+
+        return true;
+
     }
 
-    public void loadFile() throws FileNotFoundException {
+    private boolean loadFile(String filename) {
+
         System.out.println("Starting load file...");
-        Scanner sc = new Scanner(file);
-        while (sc.hasNextLine())
-            code+= sc.nextLine();
-        sc.close();
+
+        try {
+
+            code = Files.toString(new File("Files/" + filename), Charsets.UTF_8);
+
+        } catch (FileNotFoundException e) {
+
+            System.err.println("File not found!");
+            return false;
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+            return false;
+
+        }
+
         System.out.println("File completely loaded!");
+
+        return true;
+
     }
 
+    private boolean parseFile() {
 
+//        String parseString = new String("function getCode(){var syntax = engine.parse('"+code+"'); return JSON.stringify(syntax);}");
+//
+//        try {
+//
+//            engine.eval(parseString);
+//
+//        } catch (ScriptException e) {
+//
+//            e.printStackTrace();
+//            return false;
+//
+//        }
 
-    public void parseFile() throws ScriptException, JSONException {
-        System.out.println("Parsing file... Please wait.");
-        String parseString = new String("function getCode(){var syntax = esprima.parse('"+code+"'); return JSON.stringify(syntax);}");
-        engine.eval(parseString);
-        code = (String)engine.eval("getCode();");
-        codeObj = new JSONObject(code);
+        try {
+
+            String jsonString = "JSON.stringify(esprima.parse('" + StringEscapeUtils.escapeEcmaScript(code) + "'));";
+            code = String.valueOf(engine.eval(jsonString));
+            System.out.println(new JSONObject(code).toString(4));
+
+            codeObj = new JSONObject(code);
+
+        } catch (JSONException | ScriptException e) {
+
+            e.printStackTrace();
+            return false;
+
+        }
+
+        return true;
+
     }
 
 }

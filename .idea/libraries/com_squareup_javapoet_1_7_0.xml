@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="com.squareup:javapoet:1.7.0" type="repository">
+    <properties maven-id="com.squareup:javapoet:1.7.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/javapoet-1.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/tools.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/tools.jar!/" />
+    </SOURCES>
+  </library>
+</component>
