@@ -5,9 +5,9 @@ ArrayComprehensionLoop
 ArrayLiteral                    -->CHECKED!
 Assignment                      -->CHECKED!
 AstNode                         -->CHECKED!
-AstRoot
+AstRoot                         -->?????
 Block
-BreakStatement
+BreakStatement                  -->CHECKED!
 CatchClause
 Comment
 ConditionalExpression
@@ -21,43 +21,43 @@ ErrorCollector
 ErrorNode
 ExpressionStatement              --> CHECKED!
 ForInLoop
-ForLoop                          --> CHECKED!
-FunctionCall                     --> CHECKED!
+ForLoop                          -->CHECKED!
+FunctionCall                     -->CHECKED!
 FunctionNode
 GeneratorExpression
 GeneratorExpressionLoop
 IdeErrorReporter
-IfStatement                      --> CHECKED!
-InfixExpression                  --> CHECKED!
+IfStatement                      -->CHECKED!
+InfixExpression                  -->CHECKED!
 Jump
-KeywordLiteral                   --> CHECKED!
+KeywordLiteral                   -->CHECKED!
 Label
 LabeledStatement
 LetNode
 Loop
-Name                            --> CHECKED!
+Name                            -->CHECKED!
 NewExpression
 NodeVisitor
-NumberLiteral                   --> CHECKED!
+NumberLiteral                   -->CHECKED!
 ObjectLiteral
 ObjectProperty
-ParenthesizedExpression         --> CHECKED!
+ParenthesizedExpression         -->CHECKED!
 ParseProblem
-PropertyGet                     --> CHECKED!
+PropertyGet                     -->CHECKED!
 RegExpLiteral
 ReturnStatement
-Scope                           --> CHECKED!
+Scope                           -->CHECKED!
 ScriptNode
-StringLiteral                   --> CHECKED!
-SwitchCase
-SwitchStatement
+StringLiteral                   -->CHECKED!
+SwitchCase                      -->CHECKED!
+SwitchStatement                 -->CHECKED!
 Symbol
 ThrowStatement
 TryStatement
-UnaryExpression                 --> CHECKED!
-VariableDeclaration             --> CHECKED!
-VariableInitializer             --> CHECKED!
-WhileLoop                       --> CHECKED!
+UnaryExpression                 -->CHECKED!
+VariableDeclaration             -->CHECKED!
+VariableInitializer             -->CHECKED!
+WhileLoop                       -->CHECKED!
 WithStatement
 XmlDotQuery
 XmlElemRef

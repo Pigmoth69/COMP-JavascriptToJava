@@ -1,8 +1,17 @@
 public final class JS2Java {
     public static void main(String[] args) {
-        do{
-            text = "The number is " + i;
-            i++;
-        }while(i < 10)
+        .var. x = 3;
+        switch(x){
+            case 6
+               text = "Today is Saturday";
+               break;
+            case 0
+               text = "Today is Sunday";
+               x++;
+               break;
+            case 22
+               break;
+            default:
+               text = "Looking forward to the Weekend";
     }
 }

@@ -45,6 +45,9 @@ public class Visitor implements NodeVisitor {
             case "ParenthesizedExpression":
             case "WhileLoop":
             case "DoLoop":
+            case "SwitchStatement":
+            case "SwitchCase":
+            case "BreakStatement":
 
                 output += print(node);
 
@@ -100,15 +103,50 @@ public class Visitor implements NodeVisitor {
 
             case "DoLoop"                    :return print((DoLoop) node);
 
+            case "SwitchStatement"           :return print((SwitchStatement) node);
+
+            case "SwitchCase"                :return print((SwitchCase) node);
+
+            case "BreakStatement"            :return print((BreakStatement) node);
+
             default                          : return "";
 
         }
 
     }
 
+    private String print(BreakStatement node){
+        return "break;";
+    }
+
+    private String print(SwitchCase node){
+        String output;
+        if(node.getExpression() == null) // precisa de ser mudado o ExpressionStatement para aceitar o null !
+            output ="    default:";
+        else
+            output = "    case "+print(node.getExpression());
+
+
+
+        List<AstNode> statements = node.getStatements();
+        for(AstNode s : statements){
+            output += "\n"+"       "+print(s);
+        }
+        return output;
+    }
+
+    private String print(SwitchStatement node){
+        String output = "switch("+print(node.getExpression())+"){\n";
+        List<SwitchCase> cases = node.getCases();
+        for(SwitchCase c : cases){
+            output+= print(c)+"\n";
+        }
+        return output;
+    }
+
     private String print(DoLoop node){
         String output= "do"+print(node.getBody());
-        output += "while("+print(node.getCondition())+")\n";
+        output += "while("+print(node.getCondition())+");\n";
         return output;
     }
     private String print(WhileLoop node){

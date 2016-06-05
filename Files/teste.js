@@ -14,8 +14,29 @@ for (var i = 0; i < 5; i++) {
 //console.log("olasas"+2);
 //coisas = ["danoe",1,2,3]
 //window.onload(call);
-do {
-    text += "The number is " + i;
+/*var i = 0;
+while (i != "daniel") {
+    console.log("The number is "+i);
     i++;
-}
-while (i < 10);
+}*/
+
+/*var i = 0;
+do{
+    text = "THe number is: "+i
+    i++;
+}while(i < 10)*/
+/*
+var x = 3;
+switch (x) {
+    case 6:
+        text = "Today is Saturday";
+        break;
+    case 0:
+        text = "Today is Sunday";
+        x++;
+        break;
+    case 22:
+        break;
+    default:
+        text = "Looking forward to the Weekend";
+}*/
