@@ -4,12 +4,16 @@ import org.apache.commons.lang3.StringUtils;
 import org.mozilla.javascript.Token;
 import org.mozilla.javascript.ast.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Visitor implements NodeVisitor {
 
     private String output = "";
     private int indentLevel = 0;
+    private HashMap<String,ArrayList<String>> variablesList = new HashMap<>();
+    //onde encontrarmos $var = --> neste padrão regex, substituimos pelo tipo de variável que queremos
 
     public String getOutput() {
         return output;
@@ -69,12 +73,42 @@ public class Visitor implements NodeVisitor {
 
             case "Name"                   : return print((Name) node);
 
+            case "ArrayLiteral"           :return print((ArrayLiteral) node);
+
+            case "PropertyGet"            :return print((PropertyGet) node);
+
+            case "StringLiteral"          :return print((StringLiteral) node);
+
             default                       : return "";
 
         }
 
     }
 
+    private String print(StringLiteral node){
+        return node.getValue(true);
+    }
+
+    private String print(PropertyGet node){
+        if(print(node.getTarget()).equals("console") && print(node.getProperty()).equals("log"))
+            return "System.out.println";
+        else {
+            System.err.println("Invalid propertyGet!");//QUANDO ISTO ACONTECE È PORQUE È NECESSÀRIO CRIAR MAIS UM CASO PARA O EXEMPLO
+            return "";
+        }
+    }
+    private String print(ArrayLiteral node){//ainda não está feita
+        String s = "new ArrayList<Integer>(";
+        List<AstNode> nodes = node.getElements();
+        for(int i = 0; i < nodes.size();i++){
+            if(i==nodes.size()-1)
+                s+=print(node.getElement(i));
+            else
+                s+=print(node.getElement(i))+",";
+        }
+        s+=")";
+        return s;
+    }
     private String print(ExpressionStatement node) {
 
         return print(node.getExpression()) + ";\n";
@@ -83,7 +117,7 @@ public class Visitor implements NodeVisitor {
 
     private String print(VariableDeclaration node) {
 
-        String output = "int ";
+        String output = ".var. ";
 
         List<VariableInitializer> variables = node.getVariables();
 
@@ -174,7 +208,11 @@ public class Visitor implements NodeVisitor {
         String output = print(node.getTarget());
 
         if (node.getInitializer() != null) {
-            output += " = " + print(node.getInitializer());
+            String initializer = print(node.getInitializer());
+            addVariable(output,initializer);
+            output += " = " + initializer;
+        }else{
+            addVariable(output,null);
         }
 
         return output;
@@ -240,9 +278,7 @@ public class Visitor implements NodeVisitor {
     }
 
     private String print(FunctionCall node) {
-
         String output = print(node.getTarget()) + "(";
-
         List<AstNode> arguments = node.getArguments();
 
         for (int i = 0; i < arguments.size(); i++) {
@@ -272,9 +308,24 @@ public class Visitor implements NodeVisitor {
     }
 
     private String print(Name node) {
-
         return node.getIdentifier();
 
+    }
+
+    private void addVariable(String variableName, String variableValue){
+        if(variablesList.containsKey(variableName)){
+            ArrayList<String> temp = variablesList.get(variableName);
+            temp.add(variableValue);
+            variablesList.put(variableName,temp);
+        }else{
+            ArrayList<String> temp = new ArrayList<>();
+            temp.add(variableValue);
+            variablesList.put(variableName,temp);
+        }
+    }
+
+    public HashMap<String,ArrayList<String>> getVariablesList(){
+        return variablesList;
     }
 
 }

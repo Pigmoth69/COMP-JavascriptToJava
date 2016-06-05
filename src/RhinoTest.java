@@ -13,6 +13,7 @@ import java.io.Reader;
 
 public class RhinoTest {
 
+
     private static MethodSpec.Builder main = MethodSpec.methodBuilder("main")
             .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
             .returns(void.class)
@@ -28,18 +29,18 @@ public class RhinoTest {
 
             AstRoot node = new Parser().parse(reader, "", 1);
             node.visitAll(visitor);
-
+            System.out.println("Program Variables: ");
+            System.out.println(visitor.getVariablesList());
         }
 
         main.addCode(visitor.getOutput());
 
-        TypeSpec js2Java = TypeSpec.classBuilder("JS2Java")
+        TypeSpec js2Java= TypeSpec.classBuilder("JS2Java")
                 .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
                 .addMethod(main.build())
                 .build();
 
-        JavaFile javaFile = JavaFile.builder("", js2Java).indent("    ").skipJavaLangImports(true).build();
-
+        JavaFile javaFile  = JavaFile.builder("", js2Java).indent("    ").skipJavaLangImports(true).build();
         System.out.println();
         javaFile.writeTo(System.out);
         javaFile.writeTo(new File("Files/"));
