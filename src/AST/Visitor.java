@@ -13,6 +13,7 @@ public class Visitor implements NodeVisitor {
     private String output = "";
     private int indentLevel = 0;
     private HashMap<String,ArrayList<String>> variablesList = new HashMap<>();
+    private HashMap<String,String> functions = new HashMap<>();
     //onde encontrarmos $var = --> neste padrão regex, substituimos pelo tipo de variável que queremos
 
     public String getOutput() {
@@ -404,6 +405,10 @@ public class Visitor implements NodeVisitor {
 
     public HashMap<String,ArrayList<String>> getVariablesList(){
         return variablesList;
+    }
+
+    public HashMap<String,String> getFunctions(){
+        return functions;
     }
 
 }

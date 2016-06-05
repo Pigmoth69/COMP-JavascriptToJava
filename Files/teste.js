@@ -40,3 +40,16 @@ switch (x) {
     default:
         text = "Looking forward to the Weekend";
 }*/
+/*function crossProduct(v1, v2) {
+    var oldX = v1[0];
+    var oldY = v1[1];
+    v1[0] = v2[1] * v1[2] - v2[2] * oldY;
+    v1[1] = v2[2] * oldX - v2[0] * v1[2];
+    v1[2] = v2[0] * oldY - v2[1] * oldX;
+    return v1;
+}*/
+
+var i = "daniel";
+i = 0;
+a=1
+i = a;

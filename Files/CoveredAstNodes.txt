@@ -19,7 +19,7 @@ EmptyExpression
 EmptyStatement
 ErrorCollector
 ErrorNode
-ExpressionStatement              --> CHECKED!
+ExpressionStatement              -->CHECKED!
 ForInLoop
 ForLoop                          -->CHECKED!
 FunctionCall                     -->CHECKED!

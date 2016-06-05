@@ -1,17 +1,6 @@
 public final class JS2Java {
     public static void main(String[] args) {
-        .var. x = 3;
-        switch(x){
-            case 6
-               text = "Today is Saturday";
-               break;
-            case 0
-               text = "Today is Sunday";
-               x++;
-               break;
-            case 22
-               break;
-            default:
-               text = "Looking forward to the Weekend";
+        .var. i = "daniel";
+        i = 0;a = 1;i = a;
     }
 }
