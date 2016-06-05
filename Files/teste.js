@@ -14,6 +14,8 @@ for (var i = 0; i < 5; i++) {
 //console.log("olasas"+2);
 //coisas = ["danoe",1,2,3]
 //window.onload(call);
-while(c != 2){
-    console.log("c is:"+c+"and not 2");
+do {
+    text += "The number is " + i;
+    i++;
 }
+while (i < 10);

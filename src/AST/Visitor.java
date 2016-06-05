@@ -24,12 +24,27 @@ public class Visitor implements NodeVisitor {
 
         System.out.println(node.makeIndent(node.depth()) + node.shortName() + " (" + node.getType() + " - " + Token.typeToName(node.getType()) + ")");
 
-        /*switch (node.shortName()) {
+        switch (node.shortName()) {
 
-            case "ExpressionStatement":
             case "VariableDeclaration":
+            case "ExpressionStatement":
             case "IfStatement":
+            case "Scope":
             case "ForLoop":
+            case "VariableInitializer":
+            case "Assignment":
+            case "InfixExpression":
+            case "UnaryExpression":
+            case "FunctionCall":
+            case "NumberLiteral":
+            case "KeywordLiteral":
+            case "Name":
+            case "ArrayLiteral":
+            case "PropertyGet":
+            case "StringLiteral":
+            case "ParenthesizedExpression":
+            case "WhileLoop":
+            case "DoLoop":
 
                 output += print(node);
 
@@ -37,7 +52,7 @@ public class Visitor implements NodeVisitor {
 
             default:
 
-        }*/
+        }
 
         return true;
 
@@ -81,10 +96,25 @@ public class Visitor implements NodeVisitor {
 
             case "ParenthesizedExpression"   :return print((ParenthesizedExpression) node);
 
+            case "WhileLoop"                 :return print((WhileLoop) node);
+
+            case "DoLoop"                    :return print((DoLoop) node);
+
             default                          : return "";
 
         }
 
+    }
+
+    private String print(DoLoop node){
+        String output= "do"+print(node.getBody());
+        output += "while("+print(node.getCondition())+")\n";
+        return output;
+    }
+    private String print(WhileLoop node){
+        String output = "while("+print(node.getCondition())+")";
+        output += print(node.getBody());
+        return output+"\n";
     }
 
     private String print(ParenthesizedExpression node){
@@ -115,9 +145,10 @@ public class Visitor implements NodeVisitor {
         s+=")";
         return s;
     }
-    private String print(ExpressionStatement node) {
-
-        return print(node.getExpression()) + ";\n";
+    private String print(ExpressionStatement node) {//estou a fazer identação com esta função. Caso apareça desformatado, pode ser deste código ;)
+        if(node.getParent().getLastChild() == node)
+            return print(node.getExpression()) + ";\n";
+        return print(node.getExpression()) + ";";
 
     }
 

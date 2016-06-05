@@ -13,7 +13,7 @@ Comment
 ConditionalExpression
 ContinueStatement
 DestructuringForm
-DoLoop
+DoLoop                          -->CHECKED!
 ElementGet
 EmptyExpression
 EmptyStatement
@@ -57,7 +57,7 @@ TryStatement
 UnaryExpression                 --> CHECKED!
 VariableDeclaration             --> CHECKED!
 VariableInitializer             --> CHECKED!
-WhileLoop
+WhileLoop                       --> CHECKED!
 WithStatement
 XmlDotQuery
 XmlElemRef
