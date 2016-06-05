@@ -24,7 +24,7 @@ public class Visitor implements NodeVisitor {
 
         System.out.println(node.makeIndent(node.depth()) + node.shortName() + " (" + node.getType() + " - " + Token.typeToName(node.getType()) + ")");
 
-        switch (node.shortName()) {
+        /*switch (node.shortName()) {
 
             case "ExpressionStatement":
             case "VariableDeclaration":
@@ -37,7 +37,7 @@ public class Visitor implements NodeVisitor {
 
             default:
 
-        }
+        }*/
 
         return true;
 
@@ -47,42 +47,48 @@ public class Visitor implements NodeVisitor {
 
         switch (node.shortName()) {
 
-            case "VariableDeclaration"    : return print((VariableDeclaration) node);
+            case "VariableDeclaration"       : return print((VariableDeclaration) node);
 
-            case "ExpressionStatement"    : return print((ExpressionStatement) node);
+            case "ExpressionStatement"       : return print((ExpressionStatement) node);
 
-            case "IfStatement"            : return print((IfStatement) node);
+            case "IfStatement"               : return print((IfStatement) node);
 
-            case "Scope"                  : return print((Scope) node);
+            case "Scope"                     : return print((Scope) node);
 
-            case "ForLoop"                : return print((ForLoop) node);
+            case "ForLoop"                   : return print((ForLoop) node);
 
-            case "VariableInitializer"    : return print((VariableInitializer) node);
+            case "VariableInitializer"       : return print((VariableInitializer) node);
 
-            case "Assignment"             : return print((Assignment) node);
+            case "Assignment"                : return print((Assignment) node);
 
-            case "InfixExpression"        : return print((InfixExpression) node);
+            case "InfixExpression"           : return print((InfixExpression) node);
 
-            case "UnaryExpression"        : return print((UnaryExpression) node);
+            case "UnaryExpression"           : return print((UnaryExpression) node);
 
-            case "FunctionCall"           : return print((FunctionCall) node);
+            case "FunctionCall"              : return print((FunctionCall) node);
 
-            case "NumberLiteral"          : return print((NumberLiteral) node);
+            case "NumberLiteral"             : return print((NumberLiteral) node);
 
-            case "KeywordLiteral"         : return print((KeywordLiteral) node);
+            case "KeywordLiteral"            : return print((KeywordLiteral) node);
 
-            case "Name"                   : return print((Name) node);
+            case "Name"                      : return print((Name) node);
 
-            case "ArrayLiteral"           :return print((ArrayLiteral) node);
+            case "ArrayLiteral"              :return print((ArrayLiteral) node);
 
-            case "PropertyGet"            :return print((PropertyGet) node);
+            case "PropertyGet"               :return print((PropertyGet) node);
 
-            case "StringLiteral"          :return print((StringLiteral) node);
+            case "StringLiteral"             :return print((StringLiteral) node);
 
-            default                       : return "";
+            case "ParenthesizedExpression"   :return print((ParenthesizedExpression) node);
+
+            default                          : return "";
 
         }
 
+    }
+
+    private String print(ParenthesizedExpression node){
+        return "("+print(node.getExpression())+")";
     }
 
     private String print(StringLiteral node){
@@ -93,8 +99,8 @@ public class Visitor implements NodeVisitor {
         if(print(node.getTarget()).equals("console") && print(node.getProperty()).equals("log"))
             return "System.out.println";
         else {
-            System.err.println("Invalid propertyGet!");//QUANDO ISTO ACONTECE È PORQUE È NECESSÀRIO CRIAR MAIS UM CASO PARA O EXEMPLO
-            return "";
+            System.err.println("Invalid propertyGet! Or user needs to implement that function");//QUANDO ISTO ACONTECE È PORQUE È NECESSÀRIO CRIAR MAIS UM CASO PARA O EXEMPLO
+            return print(node.getTarget())+"."+print(node.getProperty());
         }
     }
     private String print(ArrayLiteral node){//ainda não está feita
@@ -220,8 +226,11 @@ public class Visitor implements NodeVisitor {
     }
 
     private String print(Assignment node) {
-
-        return print(node.getLeft()) + " = " + print(node.getRight());
+        String nodeRight,nodeLeft;
+        nodeRight= print(node.getRight());
+        nodeLeft=print(node.getLeft());
+        addVariable(nodeLeft,nodeRight);
+        return  nodeLeft+ " = " + nodeRight;
 
     }
 

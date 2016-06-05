@@ -12,5 +12,8 @@ for (var i = 0; i < 5; i++) {
 
 //var NUL = [a,2,3,4];
 //console.log("olasas"+2);
-var x = 2,y=3;
-var x = "daniel";
+//coisas = ["danoe",1,2,3]
+//window.onload(call);
+while(c != 2){
+    console.log("c is:"+c+"and not 2");
+}
