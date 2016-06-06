@@ -105,8 +105,9 @@ try {
 }*/
 
 var iterations = 0;
-​var x = 2;
+​var num = 2;
 function rFact(num) {
+    iterations++;
     if (num == 0) {
         return 1;
     } else {
