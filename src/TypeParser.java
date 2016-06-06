@@ -10,11 +10,13 @@ import java.util.HashMap;
 public class TypeParser {
 
     private static HashMap<String, String> globalVariables;
+    private static HashMap<String, TypeParserFunction> functions;
 
     public static void init() {
 
         JSONParser parser = new JSONParser();
-        globalVariables = new HashMap<String, String>();
+        globalVariables = new HashMap<>();
+        functions = new HashMap<>();
 
         try {
 
@@ -30,9 +32,9 @@ public class TypeParser {
             }
 
             for (Object function : jsonFunctions) {
-
                 String name = (String) ((JSONObject)function).get("name");
-
+                TypeParserFunction tpFunction = new TypeParserFunction((JSONObject) function);
+                functions.put(name, tpFunction);
             }
 
         } catch (IOException | ParseException e) {
@@ -46,7 +48,7 @@ public class TypeParser {
     }
 
     public static String getFunctionReturnType(String functionName) {
-        return "";
+        return functions.get(functionName).getReturnType();
     }
 
     public static String getFunctionArgumentType(String functionName, String argumentName) {
