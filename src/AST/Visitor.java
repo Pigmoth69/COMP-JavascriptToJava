@@ -1,11 +1,13 @@
 package AST;
 
 import org.apache.commons.lang3.StringUtils;
+import org.mozilla.javascript.Node;
 import org.mozilla.javascript.Token;
 import org.mozilla.javascript.ast.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 public class Visitor implements NodeVisitor {
@@ -49,6 +51,13 @@ public class Visitor implements NodeVisitor {
             case "SwitchStatement":
             case "SwitchCase":
             case "BreakStatement":
+            case "TryStatement":
+            case "CatchClause":
+            case "Block":
+            case "ThrowStatement":
+            case "NewExpression":
+            case "ObjectLiteral":
+            case "ObjectProperty":
 
                 output += print(node);
 
@@ -104,16 +113,86 @@ public class Visitor implements NodeVisitor {
 
             case "DoLoop"                    :return print((DoLoop) node);
 
-            case "SwitchStatement"           :return print((SwitchStatement) node);
+            case "SwitchStatement"           :return print((SwitchStatement) node); //--> Ver daqui para baixo pls
 
             case "SwitchCase"                :return print((SwitchCase) node);
 
             case "BreakStatement"            :return print((BreakStatement) node);
 
+            case "TryStatement"              :return print((TryStatement) node);
+
+            case "CatchClause"               :return print((CatchClause) node);
+
+            case "Block"                     :return print((Block) node);
+
+            case "ThrowStatement"            :return print((ThrowStatement) node);
+
+            case "NewExpression"             :return print((NewExpression) node);
+
+            case "ObjectLiteral"             :return print((ObjectLiteral) node);
+
+            case "ObjectProperty"            :return print((ObjectProperty) node);
+
             default                          : return "";
 
         }
 
+    }
+    private String print(ObjectProperty node){
+        return "ObjectProperty";
+    }
+
+    private String print(ObjectLiteral node){
+        return "ObjectLiteral";
+    }
+
+    private String print(NewExpression node){
+        String output = "new ";
+        output += print(node.getTarget())+"(";
+        List<AstNode> args = node.getArguments();
+        for(int i = 0; i < args.size();i++){
+            if(args.size()-1 == i)
+                output +=print(args.get(i));
+            else
+                output +=print(args.get(i))+",";
+        }
+        return output+");\n";
+    }
+
+    private String print(ThrowStatement node){
+        return "throw "+print(node.getExpression());
+    }
+
+    private String print(Block node){
+        String output = "{\n";
+        Iterator<Node> it = node.iterator();
+        while(it.hasNext()){
+            output+= "    "+print((AstNode)it.next());
+            if(it.hasNext())
+                output+="\n";
+        }
+        return output+"}\n";
+    }
+
+    private String print(CatchClause node){
+        String output;
+        if(node.getCatchCondition() == null){
+            output = "catch(Exception "+print(node.getVarName())+")"+print(node.getBody());
+        }else {
+            output = print(node.getCatchCondition()) + print(node.getBody());
+        }
+        return output;
+    }
+
+    private String print(TryStatement node){
+        String output = "try"+print(node.getTryBlock());
+        List<CatchClause> clauses = node.getCatchClauses();
+        for(CatchClause c : clauses){
+            output += print(c);
+        }
+        if(node.getFinallyBlock() != null)
+            output += "finnaly"+print(node.getFinallyBlock())+"\n";
+        return output;
     }
 
     private String print(BreakStatement node){

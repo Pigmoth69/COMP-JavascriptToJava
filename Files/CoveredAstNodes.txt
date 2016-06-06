@@ -8,7 +8,7 @@ AstNode                         -->CHECKED!
 AstRoot                         -->?????
 Block
 BreakStatement                  -->CHECKED!
-CatchClause
+CatchClause                     -->CHECKED!
 Comment
 ConditionalExpression
 ContinueStatement
@@ -36,11 +36,11 @@ LabeledStatement
 LetNode
 Loop
 Name                            -->CHECKED!
-NewExpression
+NewExpression                   -->CHECKED!
 NodeVisitor
 NumberLiteral                   -->CHECKED!
-ObjectLiteral
-ObjectProperty
+ObjectLiteral                   -->CHECKED! -Declarated but not implemented!(at least completely)
+ObjectProperty                  -->CHECKED! -Declarated but not implemented!(at least completely)
 ParenthesizedExpression         -->CHECKED!
 ParseProblem
 PropertyGet                     -->CHECKED!
@@ -52,8 +52,8 @@ StringLiteral                   -->CHECKED!
 SwitchCase                      -->CHECKED!
 SwitchStatement                 -->CHECKED!
 Symbol
-ThrowStatement
-TryStatement
+ThrowStatement                  -->CHECKED!
+TryStatement                    -->CHECKED!
 UnaryExpression                 -->CHECKED!
 VariableDeclaration             -->CHECKED!
 VariableInitializer             -->CHECKED!

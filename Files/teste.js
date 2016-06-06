@@ -49,7 +49,35 @@ switch (x) {
     return v1;
 }*/
 
-var i = "daniel";
-i = 0;
-a=1
-i = a;
+
+/*
+    if (num === 0)
+    { 1; }
+    else
+    {  num * rFact( num - 1 ); }
+*/
+
+//https://developer.mozilla.org/pt-PT/docs/Web/JavaScript/Reference/Statements/try...catch  --> TESTE IMPORTANTE!!
+/*try {
+    console.log("try");
+}
+catch(err) {
+    console.log("catch");
+}*/
+/*try {
+    try {
+        //throw new Error("oops");
+        console.log("try");
+    }catch (e){
+        console.log("cenas");
+    }
+}
+catch (ex) {
+    console.error("outer", ex.message);
+}*/
+
+try {
+    throw new Error();
+}catch (e){
+    console.log("cenas");
+}
