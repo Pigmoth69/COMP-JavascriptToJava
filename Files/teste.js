@@ -94,6 +94,7 @@ try {
     // statements to handle any unspecified exceptions
     logMyErrors(e); // pass exception object to error handler
 }*/
+/*
 try {
     myroutine(); // may throw three types of exceptions
 } catch (e if e instanceof TypeError) {
@@ -101,4 +102,11 @@ try {
 } catch (e) {
     // statements to handle any unspecified exceptions
     logMyErrors(e); // pass exception object to error handler
+}*/
+function crossProduct(v1,v2) {
+    var x = 3;
+    var y = 2;
+    var t = "asjasdsda";
+    y = t;
+    return x;
 }

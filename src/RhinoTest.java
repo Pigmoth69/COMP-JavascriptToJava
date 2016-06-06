@@ -1,3 +1,4 @@
+import AST.Functions;
 import AST.Visitor;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
@@ -10,6 +11,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
 
 public class RhinoTest {
 
@@ -18,13 +20,6 @@ public class RhinoTest {
             .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
             .returns(void.class)
             .addParameter(String[].class, "args");
-
-    private static MethodSpec functionMethods(String name) {
-        return MethodSpec.methodBuilder(name)
-                .returns(String.class)
-                .addStatement("return $S", name)
-                .build();
-    }
 
     public static void main(String[] args) throws IOException {
 
@@ -36,30 +31,31 @@ public class RhinoTest {
 
             AstRoot node = new Parser().parse(reader, "", 1);
             node.visitAll(visitor);
-            System.out.println("Program Variables: ");
-            System.out.println(visitor.getVariablesList());
         }
+        System.out.println("Class Variables: ");
+        System.out.println(visitor.getClassVariableList());
+        System.out.println("local Variables: ");
+        System.out.println(visitor.getLocalVariablesList());
 
         main.addCode(visitor.getOutput());
-
-
-
-        MethodSpecIterable m = new MethodSpecIterable();
+        ClassVariableBuilder classVars = new ClassVariableBuilder();
         for(int i = 0; i < visitor.getFunctions().size();i++){
+            //classVars.addClassVariable("int","x","2");
+        }
+        classVars.addClassVariable("int","x","2");
 
-            MethodSpec.Builder method = MethodSpec.methodBuilder("hexDigit")
-                    .addParameter(int.class, "i")
-                    .returns(char.class)
-                    .addStatement(visitor.getOutput());
 
-            m.addMethods(method.build());
+        MethodBuilder m = new MethodBuilder();
+        ArrayList<Functions> f = visitor.getFunctions();
+        for(int i = 0; i < f.size();i++){
+            m.addMethods(f.get(i).getFunctionName(),f.get(i).getParameters(),f.get(i).getBody(),f.get(i).getReturnType());
         }
 
 
 
         TypeSpec js2Java= TypeSpec.classBuilder("JS2Java")
                 .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
-                .addMethod(main.build()).addMethods(m)
+                .addMethod(main.build()).addFields(classVars).addMethods(m)
                 .build();
 
 

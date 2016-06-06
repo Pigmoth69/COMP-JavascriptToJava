@@ -14,8 +14,9 @@ public class Visitor implements NodeVisitor {
 
     private String output = "";
     private int indentLevel = 0;
-    private HashMap<String,ArrayList<String>> variablesList = new HashMap<>();
-    private HashMap<String,String> functions = new HashMap<>();
+    private HashMap<String,ArrayList<String>> localVariablesList = new HashMap<>();
+    private HashMap<String,ArrayList<String>> classVariableList = new HashMap<>();
+    private ArrayList<Functions> functions = new ArrayList<>();
     //onde encontrarmos $var = --> neste padrão regex, substituimos pelo tipo de variável que queremos
 
     public String getOutput() {
@@ -58,6 +59,8 @@ public class Visitor implements NodeVisitor {
             case "NewExpression":
             case "ObjectLiteral":
             case "ObjectProperty":
+            case "FunctionNode":
+            case "ReturnStatement":
 
                 output += print(node);
 
@@ -133,11 +136,31 @@ public class Visitor implements NodeVisitor {
 
             case "ObjectProperty"            :return print((ObjectProperty) node);
 
+            case "FunctionNode"              :return print((FunctionNode) node);
+
+            case "ReturnStatement"           :return print((ReturnStatement) node);
+
             default                          : return "";
 
         }
 
     }
+
+    private String print(ReturnStatement node){
+        return "return "+print(node.getReturnValue())+";\n";
+    }
+
+    private String print(FunctionNode node){
+        String funcName = print(node.getFunctionName());
+        String body = print(node.getBody());
+        ArrayList<String> params = new ArrayList<>();
+        for(AstNode n : node.getParams())
+            params.add(print(n));
+        functions.add(new Functions(funcName,params,body,"null"));
+
+        return "";
+    }
+
     private String print(ObjectProperty node){
         return "ObjectProperty";
     }
@@ -164,6 +187,10 @@ public class Visitor implements NodeVisitor {
     }
 
     private String print(Block node){
+        if(node.getParent() instanceof AstNode){
+            String func = parseFunctionBlock(node);
+            return func;
+        }
         String output = "{\n";
         Iterator<Node> it = node.iterator();
         while(it.hasNext()){
@@ -174,12 +201,20 @@ public class Visitor implements NodeVisitor {
         return output+"}\n";
     }
 
+    private String parseFunctionBlock(Block node) {
+        String output = "";
+        Iterator<Node> it = node.iterator();
+        while(it.hasNext()){
+            output+=print((AstNode)it.next());
+        }
+        return output;
+    }
+
     private String print(CatchClause node){
         String output;
         if(node.getCatchCondition() == null){
             output = "catch(Exception "+print(node.getVarName())+")"+print(node.getBody());
         }else {
-            System.out.println("cond: "+print(node.getCatchCondition()));
             String className = parseClassName(print(node.getVarName()),print(node.getCatchCondition()));
             output = "catch("+className+print(node.getVarName())+")"+ print(node.getBody());
         }
@@ -304,10 +339,15 @@ public class Visitor implements NodeVisitor {
         if (!(node.getParent() instanceof ForLoop)) {
             output += "\n";
         }
+        if(node.getParent() instanceof AstRoot)
+            return "";
+
 
         return output;
 
     }
+
+
 
     private String print(IfStatement node) {
 
@@ -372,15 +412,20 @@ public class Visitor implements NodeVisitor {
     }
 
     private String print(VariableInitializer node) {
-
         String output = print(node.getTarget());
 
         if (node.getInitializer() != null) {
             String initializer = print(node.getInitializer());
-            addVariable(output,initializer);
+            if(node.getParent().getParent() instanceof AstRoot)
+                addVariable(classVariableList,output,initializer);
+            else
+                addVariable(localVariablesList,output,initializer);
             output += " = " + initializer;
         }else{
-            addVariable(output,null);
+            if(node.getParent().getParent() instanceof AstRoot)
+                addVariable(classVariableList,output,null);
+            else
+                addVariable(localVariablesList,output,null);
         }
 
         return output;
@@ -391,7 +436,7 @@ public class Visitor implements NodeVisitor {
         String nodeRight,nodeLeft;
         nodeRight= print(node.getRight());
         nodeLeft=print(node.getLeft());
-        addVariable(nodeLeft,nodeRight);
+        addVariable(localVariablesList,nodeLeft,nodeRight);         //PODE TER ERRO AQUI QUANDO CHEGAR À ALTURA DE ATRIBUIR TIPO DE VARIÀVEIS!
         return  nodeLeft+ " = " + nodeRight;
 
     }
@@ -486,24 +531,30 @@ public class Visitor implements NodeVisitor {
 
     }
 
-    private void addVariable(String variableName, String variableValue){
-        if(variablesList.containsKey(variableName)){
-            ArrayList<String> temp = variablesList.get(variableName);
+
+
+    public HashMap<String,ArrayList<String>> getLocalVariablesList(){
+        return localVariablesList;
+    }
+
+
+    private void addVariable(HashMap<String,ArrayList<String>> h,String variableName, String variableValue) {
+        if(h.containsKey(variableName)){
+            ArrayList<String> temp = h.get(variableName);
             temp.add(variableValue);
-            variablesList.put(variableName,temp);
+            h.put(variableName,temp);
         }else{
             ArrayList<String> temp = new ArrayList<>();
             temp.add(variableValue);
-            variablesList.put(variableName,temp);
+            h.put(variableName,temp);
         }
     }
 
-    public HashMap<String,ArrayList<String>> getVariablesList(){
-        return variablesList;
+    public HashMap<String,ArrayList<String>> getClassVariableList(){
+        return classVariableList;
     }
 
-    public HashMap<String,String> getFunctions(){
+    public ArrayList<Functions> getFunctions(){
         return functions;
     }
-
 }
