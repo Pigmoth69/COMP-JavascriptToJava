@@ -63,9 +63,9 @@ public class Visitor implements NodeVisitor {
             case "ReturnStatement":
             case "ElementGet":
 
-                output += print(node);
-
-                return false;
+//                output += print(node);
+//
+//                return false;
 
             default:
 
@@ -284,6 +284,7 @@ public class Visitor implements NodeVisitor {
         output += "while("+print(node.getCondition())+");\n";
         return output;
     }
+
     private String print(WhileLoop node){
         String output = "while("+print(node.getCondition())+")";
         output += print(node.getBody());
@@ -301,11 +302,14 @@ public class Visitor implements NodeVisitor {
     private String print(PropertyGet node){
         if(print(node.getTarget()).equals("console") && print(node.getProperty()).equals("log"))
             return "System.out.println";
-        else {
+        else if(print(node.getTarget()).equals("document") && print(node.getProperty()).equals("write")) {
+            return "System.out.println";
+        } else {
             System.err.println("Invalid propertyGet! Or user needs to implement that function");//QUANDO ISTO ACONTECE È PORQUE È NECESSÀRIO CRIAR MAIS UM CASO PARA O EXEMPLO
             return print(node.getTarget())+"."+print(node.getProperty());
         }
     }
+
     private String print(ArrayLiteral node){//ainda não está feita
         String s = "new ArrayList<Integer>(";
         List<AstNode> nodes = node.getElements();
@@ -318,6 +322,7 @@ public class Visitor implements NodeVisitor {
         s+=")";
         return s;
     }
+
     private String print(ExpressionStatement node) {//estou a fazer identação com esta função. Caso apareça desformatado, pode ser deste código ;)
         return print(node.getExpression()) + ";\n";
     }
@@ -350,8 +355,6 @@ public class Visitor implements NodeVisitor {
         return output;
 
     }
-
-
 
     private String print(IfStatement node) {
 
@@ -515,7 +518,6 @@ public class Visitor implements NodeVisitor {
         }
 
         return output + ")";
-
     }
 
     private String print(NumberLiteral node) {
@@ -535,12 +537,9 @@ public class Visitor implements NodeVisitor {
 
     }
 
-
-
     public HashMap<String,ArrayList<String>> getLocalVariablesList(){
         return localVariablesList;
     }
-
 
     private void addVariable(HashMap<String,ArrayList<String>> h,String variableName, String variableValue) {
         if(h.containsKey(variableName)){
@@ -561,4 +560,5 @@ public class Visitor implements NodeVisitor {
     public ArrayList<Functions> getFunctions(){
         return functions;
     }
+
 }
