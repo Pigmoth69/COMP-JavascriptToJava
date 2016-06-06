@@ -25,8 +25,6 @@ public class RhinoTest {
 
         System.out.println();
 
-        TypeParser.init();
-
         Visitor visitor = new Visitor();
 
         try (Reader reader = new FileReader("Files/teste.js")) {
@@ -40,17 +38,27 @@ public class RhinoTest {
         System.out.println(visitor.getLocalVariablesList());
 
         main.addCode(visitor.getOutput());
-        FieldBuilder classVars = new FieldBuilder();
-        for(int i = 0; i < visitor.getClassVariableList().size();i++){
-            //classVars.addClassVariable("int","x","2");
+        ClassVariableBuilder classVars = new ClassVariableBuilder();
+        for (String key : visitor.getClassVariableList().keySet()) {
+            String type = TypeParser.getGlobalVariableType(key);
+            classVars.addClassVariable(type,key,visitor.getClassVariableList().get(key).get(0));//vai buscar o primeiro valor a ser atribuido à variável!
         }
-        classVars.addClassVariable("int","x","2");
 
 
         MethodBuilder m = new MethodBuilder();
         ArrayList<Functions> f = visitor.getFunctions();
         for(int i = 0; i < f.size();i++){
-            m.addMethods(f.get(i).getFunctionName(),f.get(i).getParameters(),f.get(i).getBody(),f.get(i).getReturnType());
+            for(int x = 0; x < f.get(i).getParameters().size();x++){
+                String p =f.get(i).getParameters().get(x);
+                String res = TypeParser.getFunctionArgumentType(f.get(i).getFunctionName(),p)+p;
+                f.get(i).getParameters().set(x,res);
+            }
+            String returnType;
+            if(TypeParser.getFunctionReturnType(f.get(i).getFunctionName())==null)
+                returnType=f.get(i).getReturnType();
+            else
+                returnType = TypeParser.getFunctionReturnType(f.get(i).getFunctionName());
+            m.addMethods(f.get(i).getFunctionName(),f.get(i).getParameters(),f.get(i).getBody(),returnType);
         }
 
 
