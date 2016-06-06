@@ -103,10 +103,15 @@ try {
     // statements to handle any unspecified exceptions
     logMyErrors(e); // pass exception object to error handler
 }*/
-function crossProduct(v1,v2) {
-    var x = 3;
-    var y = 2;
-    var t = "asjasdsda";
-    y = t;
-    return x;
-}
+var iterations = 0;
+​var x = 2;
+function rFact(num) {
+    if (num == 0) {
+        return 1;
+    } else {
+        return num * rFact( num - 1 );
+    }
+};
+​
+console.log(num + "!: "+rFact(5));
+console.log("Iterations: " + iterations);

@@ -1,13 +1,15 @@
 public final class JS2Java {
-    private Integer x;
+    private Integer x = 2;
 
     public static void main(String[] args) {
+        System.out.println(num + "!: " + rFact(5));System.out.println("Iterations: " + iterations);
     }
 
-    public void crossProduct(String v1, String v2) {
-        .var. x = 3;
-        .var. y = 2;
-        .var. t = "asjasdsda";
-        y = t;return x;
+    public void rFact(String num) {
+        if (num == 0) {
+            return 1;
+        } else {
+            return num * rFact(num - 1);
+        }
     }
 }

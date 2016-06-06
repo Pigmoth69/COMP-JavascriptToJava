@@ -39,7 +39,7 @@ public class RhinoTest {
 
         main.addCode(visitor.getOutput());
         ClassVariableBuilder classVars = new ClassVariableBuilder();
-        for(int i = 0; i < visitor.getFunctions().size();i++){
+        for(int i = 0; i < visitor.getClassVariableList().size();i++){
             //classVars.addClassVariable("int","x","2");
         }
         classVars.addClassVariable("int","x","2");

@@ -5,8 +5,8 @@ ArrayComprehensionLoop
 ArrayLiteral                    -->CHECKED!
 Assignment                      -->CHECKED!
 AstNode                         -->CHECKED!
-AstRoot                         -->?????
-Block
+AstRoot                         -->???????
+Block                           -->CHECKED
 BreakStatement                  -->CHECKED!
 CatchClause                     -->CHECKED!
 Comment
@@ -23,7 +23,7 @@ ExpressionStatement              -->CHECKED!
 ForInLoop
 ForLoop                          -->CHECKED!
 FunctionCall                     -->CHECKED!
-FunctionNode
+FunctionNode                     -->CHECKED!
 GeneratorExpression
 GeneratorExpressionLoop
 IdeErrorReporter
@@ -45,7 +45,7 @@ ParenthesizedExpression         -->CHECKED!
 ParseProblem
 PropertyGet                     -->CHECKED!
 RegExpLiteral
-ReturnStatement
+ReturnStatement                 -->CHECKED!
 Scope                           -->CHECKED!
 ScriptNode
 StringLiteral                   -->CHECKED!
