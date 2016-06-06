@@ -8,11 +8,11 @@ import java.util.Iterator;
 /**
  * Created by danny on 06/06/2016.
  */
-public class ClassVariableBuilder implements Iterable<FieldSpec>{
+public class FieldBuilder implements Iterable<FieldSpec>{
 
     ArrayList<FieldSpec> classVariables = new ArrayList<>();
 
-    public ClassVariableBuilder(){
+    public FieldBuilder(){
 
     }
 

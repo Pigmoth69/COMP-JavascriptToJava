@@ -13,5 +13,6 @@
     <orderEntry type="library" name="com.squareup:javapoet:1.7.0" level="project" />
     <orderEntry type="library" name="org.kie.modules:org-apache-commons-lang3:6.4.0.Final" level="project" />
     <orderEntry type="library" name="org.mozilla:rhino:1.7.7" level="project" />
+    <orderEntry type="library" name="com.googlecode.json-simple:json-simple:1.1.1" level="project" />
   </component>
 </module>

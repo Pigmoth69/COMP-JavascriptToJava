@@ -1,0 +1,30 @@
+{
+  "global_variables": [
+    {
+      "name": "iterations",
+      "type": "int"
+    },
+    {
+      "name": "x",
+      "type": "int"
+    }
+  ],
+  "functions": [
+    {
+      "name": "rFact",
+      "return_type": "int",
+      "args": [
+        {
+          "name": "num",
+          "type": "int"
+        }
+      ],
+      "local_variables": [
+        {
+          "name": "result",
+          "type": "int"
+        }
+      ]
+    }
+  ]
+}

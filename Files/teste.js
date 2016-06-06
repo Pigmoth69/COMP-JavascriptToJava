@@ -103,15 +103,15 @@ try {
     // statements to handle any unspecified exceptions
     logMyErrors(e); // pass exception object to error handler
 }*/
-var iterations = 0;
-​var x = 2;
-function rFact(num) {
-    if (num == 0) {
-        return 1;
-    } else {
-        return num * rFact( num - 1 );
-    }
-};
-​
-console.log(num + "!: "+rFact(5));
-console.log("Iterations: " + iterations);
+//var iterations = 0;
+//​var x = 2;
+//function rFact(num) {
+//    if (num == 0) {
+//        return 1;
+//    } else {
+//        var result = num * rFact( num - 1 );
+//        return result;
+//    }
+//};
+//document.write(num + "!: "+rFact(5));
+//console.log("Iterations: " + iterations);

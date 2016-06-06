@@ -25,6 +25,8 @@ public class RhinoTest {
 
         System.out.println();
 
+        TypeParser.init();
+
         Visitor visitor = new Visitor();
 
         try (Reader reader = new FileReader("Files/teste.js")) {
@@ -38,7 +40,7 @@ public class RhinoTest {
         System.out.println(visitor.getLocalVariablesList());
 
         main.addCode(visitor.getOutput());
-        ClassVariableBuilder classVars = new ClassVariableBuilder();
+        FieldBuilder classVars = new FieldBuilder();
         for(int i = 0; i < visitor.getClassVariableList().size();i++){
             //classVars.addClassVariable("int","x","2");
         }
