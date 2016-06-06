@@ -61,6 +61,7 @@ public class Visitor implements NodeVisitor {
             case "ObjectProperty":
             case "FunctionNode":
             case "ReturnStatement":
+            case "ElementGet":
 
                 output += print(node);
 
@@ -140,10 +141,16 @@ public class Visitor implements NodeVisitor {
 
             case "ReturnStatement"           :return print((ReturnStatement) node);
 
+            case "ElementGet"                :return print((ElementGet) node);
+
             default                          : return "";
 
         }
 
+    }
+
+    private String print(ElementGet node){
+        return print(node.getTarget())+"["+print(node.getElement())+"]";
     }
 
     private String print(ReturnStatement node){
@@ -312,10 +319,7 @@ public class Visitor implements NodeVisitor {
         return s;
     }
     private String print(ExpressionStatement node) {//estou a fazer identação com esta função. Caso apareça desformatado, pode ser deste código ;)
-        if(node.getParent().getLastChild() == node)
-            return print(node.getExpression()) + ";\n";
-        return print(node.getExpression()) + ";";
-
+        return print(node.getExpression()) + ";\n";
     }
 
     private String print(VariableDeclaration node) {
@@ -390,7 +394,7 @@ public class Visitor implements NodeVisitor {
         String output = "for (";
 
         if (node.getInitializer() != null) {
-            output += print(node.getInitializer());
+            output += print(node.getInitializer())+";";
         } else {
             output += ";";
         }

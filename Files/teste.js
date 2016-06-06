@@ -103,6 +103,7 @@ try {
     // statements to handle any unspecified exceptions
     logMyErrors(e); // pass exception object to error handler
 }*/
+/*
 var iterations = 0;
 ​var x = 2;
 function rFact(num) {
@@ -114,4 +115,9 @@ function rFact(num) {
 };
 ​
 console.log(num + "!: "+rFact(5));
-console.log("Iterations: " + iterations);
+console.log("Iterations: " + iterations);*/
+
+var i = 0;
+for(i; i < 10; i++){
+    console.log(i);
+}
