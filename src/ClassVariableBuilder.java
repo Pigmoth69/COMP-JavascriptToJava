@@ -30,7 +30,7 @@ public class ClassVariableBuilder implements Iterable<FieldSpec>{
                 break;
             case "String":
                 t= String.class;
-                break;
+                break;  
             case "double":
                 t=double.class; // is this right?
                 break;
