@@ -63,9 +63,9 @@ public class Visitor implements NodeVisitor {
             case "ReturnStatement":
             case "ElementGet":
 
-//                output += print(node);
-//
-//                return false;
+                output += print(node);
+
+                return false;
 
             default:
 

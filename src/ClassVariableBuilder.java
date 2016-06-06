@@ -26,7 +26,7 @@ public class ClassVariableBuilder implements Iterable<FieldSpec>{
         Type t;
         switch (type){
             case "int":
-                t=Integer.class;
+                t=int.class;
                 break;
             case "String":
                 t= String.class;
@@ -38,7 +38,7 @@ public class ClassVariableBuilder implements Iterable<FieldSpec>{
                 t = String.class;
         }
         FieldSpec.Builder var = FieldSpec.builder(t, name) //String.class Int.class boolean.class
-                .addModifiers(Modifier.PRIVATE);
+                .addModifiers(Modifier.PRIVATE).initializer(value);
         classVariables.add(var.build());
     }
 

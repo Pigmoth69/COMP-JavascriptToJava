@@ -24,7 +24,7 @@ public class RhinoTest {
     public static void main(String[] args) throws IOException {
 
         System.out.println();
-
+        TypeParser.init();
         Visitor visitor = new Visitor();
 
         try (Reader reader = new FileReader("Files/teste.js")) {
@@ -54,6 +54,7 @@ public class RhinoTest {
                 f.get(i).getParameters().set(x,res);
             }
             String returnType;
+
             if(TypeParser.getFunctionReturnType(f.get(i).getFunctionName())==null)
                 returnType=f.get(i).getReturnType();
             else
