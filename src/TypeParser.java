@@ -52,7 +52,11 @@ public class TypeParser {
     }
 
     public static String getFunctionArgumentType(String functionName, String argumentName) {
-        return "";
+        return functions.get(functionName).getArgumentType(argumentName);
+    }
+
+    public static String getFunctionLocalVariableType(String functionName, String localVariableName) {
+        return functions.get(functionName).getLocalVariableType(localVariableName);
     }
 
 }

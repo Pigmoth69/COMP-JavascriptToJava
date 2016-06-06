@@ -39,4 +39,12 @@ public class TypeParserFunction {
         return returnType;
     }
 
+    public String getArgumentType(String argumentName) {
+        return args.get(argumentName);
+    }
+
+    public String getLocalVariableType(String localVariableName) {
+        return localVariables.get(localVariableName);
+    }
+
 }
