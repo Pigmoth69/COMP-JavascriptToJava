@@ -20,11 +20,11 @@ public class MethodBuilder implements Iterable<MethodSpec> {
         Iterator<MethodSpec> m_method = methods.iterator();
         return m_method;
     }
-    public void addMethods(String name,ArrayList<String> params,String body,String returnType){
+    public void addMethods(String name, ArrayList<String> res, ArrayList<String> params, String body, String returnType){
         Type t = null;
         switch(returnType){
             case "int":
-                t = Integer.class;
+                t = int.class;
                 break;
             case "String":
                 t = String.class;
@@ -36,13 +36,30 @@ public class MethodBuilder implements Iterable<MethodSpec> {
         }
         MethodSpec.Builder method = MethodSpec.methodBuilder(name).addModifiers(Modifier.PUBLIC);
         for(int i = 0; i < params.size();i++){
-            method.addParameter(String.class, params.get(i)); // needs to check the JSON file(it still needs to be created!)
+            method.addParameter(getType(res.get(i)), params.get(i)); // needs to check the JSON file(it still needs to be created!)
         }
         if(returnType != "null" || t != null)
             method.returns(t);
         method.addCode(body);
 
         methods.add(method.build());
+    }
+
+    private Type getType(String t){
+        Type tp = null;
+        switch(t){
+            case "int":
+                tp = int.class;
+                break;
+            case "String":
+                tp = String.class;
+                break;
+            case "double":
+                tp = double.class;
+                break;
+            default:
+        }
+        return tp;
     }
 
 }

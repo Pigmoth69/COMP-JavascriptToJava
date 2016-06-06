@@ -48,18 +48,18 @@ public class RhinoTest {
         MethodBuilder m = new MethodBuilder();
         ArrayList<Functions> f = visitor.getFunctions();
         for(int i = 0; i < f.size();i++){
+            ArrayList<String> res = new ArrayList<>();
             for(int x = 0; x < f.get(i).getParameters().size();x++){
-                String p =f.get(i).getParameters().get(x);
-                String res = TypeParser.getFunctionArgumentType(f.get(i).getFunctionName(),p)+p;
-                f.get(i).getParameters().set(x,res);
+                res.add(TypeParser.getFunctionArgumentType(f.get(i).getFunctionName(),f.get(i).getParameters().get(x)));
             }
+
             String returnType;
 
             if(TypeParser.getFunctionReturnType(f.get(i).getFunctionName())==null)
                 returnType=f.get(i).getReturnType();
             else
                 returnType = TypeParser.getFunctionReturnType(f.get(i).getFunctionName());
-            m.addMethods(f.get(i).getFunctionName(),f.get(i).getParameters(),f.get(i).getBody(),returnType);
+            m.addMethods(f.get(i).getFunctionName(),res,f.get(i).getParameters(),f.get(i).getBody(),returnType);
         }
 
 
