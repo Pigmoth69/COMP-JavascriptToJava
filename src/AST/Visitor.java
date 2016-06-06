@@ -329,7 +329,7 @@ public class Visitor implements NodeVisitor {
 
     private String print(VariableDeclaration node) {
 
-        String output = ".var. ";
+        String output = "";
 
         List<VariableInitializer> variables = node.getVariables();
 
@@ -338,9 +338,13 @@ public class Visitor implements NodeVisitor {
             if ( i > 0 ) {
                 output += ", ";
             }
-
-            output += print(variables.get(i));
-
+            String fname = isInsideFunctionNode(node);
+            if(fname == null)
+                output += ".var. "+print(variables.get(i));
+            else {
+                output += TypeParser.getFunctionLocalVariableType(fname, print(variables.get(i))) + " " + print(variables.get(i));
+            }
+            System.err.println(TypeParser.getFunctionLocalVariableType(fname, print(variables.get(i))));
         }
 
         output += ";";
@@ -353,6 +357,23 @@ public class Visitor implements NodeVisitor {
 
 
         return output;
+
+    }
+    public String isInsideFunctionNode(AstNode node) {
+
+        AstNode parent = node.getParent();
+
+        if (parent != null) {
+
+            if (parent.shortName().equals("FunctionNode")) {
+                return ((FunctionNode)parent).getFunctionName().getIdentifier();
+            } else {
+                return isInsideFunctionNode(parent);
+            }
+
+        } else {
+            return null;
+        }
 
     }
 

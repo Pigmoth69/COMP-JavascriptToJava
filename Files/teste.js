@@ -119,7 +119,7 @@ console.log(num + "!: "+rFact(5));
 console.log("Iterations: " + iterations);*/
 
 function cenas(){
-    var x = 2;
+    var result = 2;
 }
 /*
 var currenty = 0;

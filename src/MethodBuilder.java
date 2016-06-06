@@ -38,7 +38,7 @@ public class MethodBuilder implements Iterable<MethodSpec> {
         for(int i = 0; i < params.size();i++){
             method.addParameter(getType(res.get(i)), params.get(i)); // needs to check the JSON file(it still needs to be created!)
         }
-        if(returnType != "null" || t != null)
+        if(returnType!= null||returnType != "null" || t != null)
             method.returns(t);
         method.addCode(body);
 

@@ -25,6 +25,22 @@
           "type": "int"
         }
       ]
+    },
+    {
+      "name": "cenas",
+      "return_type": "int",
+      "args": [
+        {
+          "name": "num",
+          "type": "int"
+        }
+      ],
+      "local_variables": [
+        {
+          "name": "result",
+          "type": "int"
+        }
+      ]
     }
   ]
 }
