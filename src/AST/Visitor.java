@@ -179,9 +179,22 @@ public class Visitor implements NodeVisitor {
         if(node.getCatchCondition() == null){
             output = "catch(Exception "+print(node.getVarName())+")"+print(node.getBody());
         }else {
-            output = print(node.getCatchCondition()) + print(node.getBody());
+            System.out.println("cond: "+print(node.getCatchCondition()));
+            String className = parseClassName(print(node.getVarName()),print(node.getCatchCondition()));
+            output = "catch("+className+print(node.getVarName())+")"+ print(node.getBody());
         }
         return output;
+    }
+
+    private String parseClassName(String varName, String print) {
+            if((varName+" instanceof TypeError").equals(print)){
+                return "IOException ";
+            }else if((varName+" instanceof RangeError").equals(print)){
+                return "IndexOutOfBoundsException ";
+            }else if((varName+" instanceof EvalError").equals(print)){
+                return "UnsupportedOperationException ";
+            }
+        return "Exception ";
     }
 
     private String print(TryStatement node){
@@ -385,29 +398,32 @@ public class Visitor implements NodeVisitor {
 
     private String print(InfixExpression node) {
 
-        String operator;
+        String operator="";
+
 
         switch (node.getType()) {
 
-            case Token.ADD    : operator = "+"; break;
+            case Token.ADD          : operator += "+";          break;
 
-            case Token.SUB    : operator = "-"; break;
+            case Token.SUB          : operator += "-";          break;
 
-            case Token.MUL    : operator = "*"; break;
+            case Token.MUL          : operator += "*";          break;
 
-            case Token.DIV    : operator = "/"; break;
+            case Token.DIV          : operator += "/";          break;
 
-            case Token.EQ     : operator = "=="; break;
+            case Token.EQ           : operator += "==";         break;
 
-            case Token.NE     : operator = "!="; break;
+            case Token.NE           : operator += "!=";         break;
 
-            case Token.LT     : operator = "<"; break;
+            case Token.LT           : operator += "<";          break;
 
-            case Token.GT     : operator = ">"; break;
+            case Token.GT           : operator += ">";          break;
 
-            case Token.LE     : operator = "<="; break;
+            case Token.LE           : operator += "<=";         break;
 
-            case Token.GE     : operator = ">="; break;
+            case Token.GE           : operator += ">=";         break;
+
+            case Token.INSTANCEOF   : operator += "instanceof"; break;
 
             default           : return "";
 

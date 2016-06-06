@@ -44,7 +44,7 @@ public class RhinoTest {
 
 
 
-        /*MethodSpecIterable m = new MethodSpecIterable();
+        MethodSpecIterable m = new MethodSpecIterable();
         for(int i = 0; i < visitor.getFunctions().size();i++){
 
             MethodSpec.Builder method = MethodSpec.methodBuilder("hexDigit")
@@ -52,14 +52,14 @@ public class RhinoTest {
                     .returns(char.class)
                     .addStatement(visitor.getOutput());
 
-            m.addMethods(method);
-        }*/
+            m.addMethods(method.build());
+        }
 
 
 
         TypeSpec js2Java= TypeSpec.classBuilder("JS2Java")
                 .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
-                .addMethod(main.build())/*.addMethods(m)*/
+                .addMethod(main.build()).addMethods(m)
                 .build();
 
 

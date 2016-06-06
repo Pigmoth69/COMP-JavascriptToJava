@@ -75,9 +75,30 @@ catch(err) {
 catch (ex) {
     console.error("outer", ex.message);
 }*/
-
+/*
 try {
     throw new Error();
 }catch (e){
     console.log("cenas");
+}*/
+/*
+try {
+    myroutine(); // may throw three types of exceptions
+} catch (e if e instanceof TypeError) {
+    // statements to handle TypeError exceptions
+} catch (e if e instanceof RangeError) {
+    // statements to handle RangeError exceptions
+} catch (e if e instanceof EvalError) {
+    // statements to handle EvalError exceptions
+} catch (e) {
+    // statements to handle any unspecified exceptions
+    logMyErrors(e); // pass exception object to error handler
+}*/
+try {
+    myroutine(); // may throw three types of exceptions
+} catch (e if e instanceof TypeError) {
+    console.log("cenas");
+} catch (e) {
+    // statements to handle any unspecified exceptions
+    logMyErrors(e); // pass exception object to error handler
 }
