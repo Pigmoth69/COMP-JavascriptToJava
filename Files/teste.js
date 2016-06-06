@@ -103,7 +103,7 @@ try {
     // statements to handle any unspecified exceptions
     logMyErrors(e); // pass exception object to error handler
 }*/
-
+/*
 var iterations = 0;
 ​var num = 2;
 function rFact(num) {
@@ -116,4 +116,17 @@ function rFact(num) {
 };
 ​
 console.log(num + "!: "+rFact(5));
-console.log("Iterations: " + iterations);
+console.log("Iterations: " + iterations);*/
+
+function cenas(){
+    var x = 2;
+}
+/*
+var currenty = 0;
+var context;
+var image;
+var imageData;
+
+var cHeight;
+var cWidth;
+}*/

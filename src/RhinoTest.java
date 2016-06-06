@@ -1,4 +1,5 @@
 import AST.Functions;
+import AST.TypeParser;
 import AST.Visitor;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
@@ -14,7 +15,6 @@ import java.io.Reader;
 import java.util.ArrayList;
 
 public class RhinoTest {
-
 
     private static MethodSpec.Builder main = MethodSpec.methodBuilder("main")
             .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
