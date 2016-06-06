@@ -116,8 +116,3 @@ function rFact(num) {
 ​
 console.log(num + "!: "+rFact(5));
 console.log("Iterations: " + iterations);*/
-
-var i = 0;
-for(i; i < 10; i++){
-    console.log(i);
-}
