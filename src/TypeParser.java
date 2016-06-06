@@ -45,4 +45,12 @@ public class TypeParser {
         return globalVariables.get(variableName);
     }
 
+    public static String getFunctionReturnType(String functionName) {
+        return "";
+    }
+
+    public static String getFunctionArgumentType(String functionName, String argumentName) {
+        return "";
+    }
+
 }
