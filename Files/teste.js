@@ -141,10 +141,9 @@ function logMyErrors(e){
 }
 */
 
-
+/*
 function startMandelbulb() {
 
-    /* Load the canvas */
     var mandelbulbCanvas = document.getElementById('mandelbulb');
     cHeight = mandelbulbCanvas.height;
     cWidth = mandelbulbCanvas.width;
@@ -152,8 +151,7 @@ function startMandelbulb() {
     context = mandelbulbCanvas.getContext("2d");
     context.fillRect(0, 0, cWidth, cHeight);
 
-    //With a depth of field of 2.0x2.0 we calculate the pixel detail
-    //This isn't using aspect ratio, nor real perspective
+
     pixel = (DEPTH_OF_FIELD)/((cHeight+cWidth)/2);
     halfPixel = pixel/2;
 
@@ -161,4 +159,26 @@ function startMandelbulb() {
     imageData = image.data;
 
     animate();
+}*/
+var cars = ["BMW", "Volvo", "Saab", "Ford"];
+var i = 0;
+var text = "";
+
+while (cars[i]) {
+    text += cars[i] + "<br>";
+    i++;
 }
+
+var text2 = "";
+var i2 = 0;
+
+
+do {
+    if(i.equals(i2))
+        console.log("it matches!")
+    text2 += "The number is " + i2;
+    i2++;
+}
+while (i2 < 5);
+
+

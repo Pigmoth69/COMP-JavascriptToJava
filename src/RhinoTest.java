@@ -44,7 +44,6 @@ public class RhinoTest {
             classVars.addClassVariable(type,key,visitor.getClassVariableList().get(key).get(0));//vai buscar o primeiro valor a ser atribuido à variável!
         }
 
-
         MethodBuilder m = new MethodBuilder();
         ArrayList<Functions> f = visitor.getFunctions();
         for(int i = 0; i < f.size();i++){
