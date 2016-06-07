@@ -1,0 +1,18 @@
+{
+  "global_variables": [
+    {
+      "name": "a",
+      "type": "int"
+    },
+    {
+      "name": "b",
+      "type": "int"
+    },
+    {
+      "name": "i",
+      "type": "int"
+    }
+  ],
+  "functions": [
+  ]
+}

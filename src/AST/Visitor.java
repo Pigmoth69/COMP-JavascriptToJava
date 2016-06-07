@@ -329,22 +329,25 @@ public class Visitor implements NodeVisitor {
         String output = "";
 
         List<VariableInitializer> variables = node.getVariables();
-
+        boolean isEmpty = false;
         for (int i = 0; i < variables.size(); i++) {
 
             if ( i > 0 ) {
                 output += ", ";
             }
+
             String fname = isInsideFunctionNode(node);
-            if(fname == null)
-                output += ".var. "+print(variables.get(i));
-            else {
+            if(fname == null) {
+                output += ".var. " + print(variables.get(i));
+                if(print(variables.get(i)).equals(""))
+                    isEmpty=true;
+            }else {
                 output += TypeParser.getFunctionLocalVariableType(fname, getWord(print(variables.get(i)))) + " " + print(variables.get(i));
             }
             //System.err.println(TypeParser.getFunctionLocalVariableType(fname, print(variables.get(i))));
         }
-
-        output += ";";
+        if(isEmpty)
+            output += ";";
 
         if (!(node.getParent() instanceof ForLoop)) {
             output += "\n";
