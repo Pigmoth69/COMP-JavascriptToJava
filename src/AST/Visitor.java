@@ -305,7 +305,7 @@ public class Visitor implements NodeVisitor {
         else if(print(node.getTarget()).equals("document") && print(node.getProperty()).equals("write")) {
             return "System.out.println";
         } else {
-            System.err.println("Invalid propertyGet! Or user needs to implement that function");//QUANDO ISTO ACONTECE È PORQUE È NECESSÀRIO CRIAR MAIS UM CASO PARA O EXEMPLO
+            //System.err.println("Invalid propertyGet! Or user needs to implement that function");//QUANDO ISTO ACONTECE È PORQUE È NECESSÀRIO CRIAR MAIS UM CASO PARA O EXEMPLO
             return print(node.getTarget())+"."+print(node.getProperty());
         }
     }
@@ -583,7 +583,7 @@ public class Visitor implements NodeVisitor {
     }
 
     public String getWord(String s){
-        System.err.println("adsojnsafojnfsafsakfsaklfsankfsaon");
+        //System.err.println("adsojnsafojnfsafsakfsaklfsankfsaon");
         String res = new String();
         System.out.println("strg: ");
 
