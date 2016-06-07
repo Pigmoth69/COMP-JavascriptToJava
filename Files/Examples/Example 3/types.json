@@ -1,0 +1,111 @@
+{
+  "global_variables": [
+    {
+      "name": "coisas",
+      "type": "String"
+    },
+    {
+      "name": "iterations",
+      "type": "int"
+    },
+    {
+      "name":"ar",
+      "type":"int[]"
+    },
+    {
+      "name": "num",
+      "type": "int"
+    },
+    {
+      "name":"a",
+      "type":"int"
+    },
+    {
+      "name":"b",
+      "type":"int"
+    }
+  ],
+  "functions": [
+    {
+      "name": "rFact",
+      "return_type": "int",
+      "args": [
+        {
+          "name": "num",
+          "type": "int"
+        }
+      ],
+      "local_variables": [
+        {
+          "name": "result",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "startMandelbulb",
+      "return_type": "null",
+      "args": [
+        {
+        }
+      ],
+      "local_variables": [
+        {
+          "name": "mandelbulbCanvas",
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "myroutine",
+      "return_type": "null",
+      "args": [
+        {
+        }
+      ],
+      "local_variables": [
+        {
+          "name": "y",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "logMyErrors",
+      "return_type": "null",
+      "args": [
+        {
+          "name": "e",
+          "type": "String"
+        }
+      ],
+      "local_variables": [
+        {
+        }
+      ]
+    },
+    {
+      "name": "crossProduct",
+      "return_type": "int[]",
+      "args": [
+        {
+          "name": "v1",
+          "type": "int[]"
+        },{
+          "name": "v2",
+          "type": "int[]"
+        }
+      ],
+      "local_variables": [
+        {
+          "name":"oldX",
+          "type":"int[]"
+        },
+        {
+          "name":"oldY",
+          "type":"int[]"
+        }
+      ]
+    }
+  ]
+}

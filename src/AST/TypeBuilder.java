@@ -32,6 +32,12 @@ public class TypeBuilder {
             case "double[]":
                 t = double[].class;
                 break;
+            case "char":
+                t = char.class;
+                break;
+            case "char[]":
+                t = char[].class;
+                break;
             default:
                t=null;
                 break;

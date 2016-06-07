@@ -1,0 +1,41 @@
+{
+  "global_variables": [
+    {
+      "name": "var1",
+      "type": "int"
+    },
+    {
+      "name": "var2",
+      "type": "double"
+    },
+    {
+      "name": "var3",
+      "type": "String"
+    },
+    {
+      "name": "var4",
+      "type": "char"
+    },
+    {
+      "name": "var5",
+      "type": "int[]"
+    },
+    {
+      "name": "var6",
+      "type": "double[]"
+    },
+    {
+      "name": "var7",
+      "type": "String[]"
+    },
+    {
+      "name": "var8",
+      "type": "char[]"
+    }
+  ],
+  "functions": [
+  {
+
+  }
+  ]
+}
