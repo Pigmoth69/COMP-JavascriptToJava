@@ -310,8 +310,8 @@ public class Visitor implements NodeVisitor {
         }
     }
 
-    private String print(ArrayLiteral node){//ainda não está feita
-        String s = "new ArrayList<Integer>(";
+    private String print(ArrayLiteral node){
+        String s = "[";
         List<AstNode> nodes = node.getElements();
         for(int i = 0; i < nodes.size();i++){
             if(i==nodes.size()-1)
@@ -319,7 +319,7 @@ public class Visitor implements NodeVisitor {
             else
                 s+=print(node.getElement(i))+",";
         }
-        s+=")";
+        s+="]";
         return s;
     }
 
@@ -342,7 +342,6 @@ public class Visitor implements NodeVisitor {
             if(fname == null)
                 output += ".var. "+print(variables.get(i));
             else {
-                System.err.println("asfkasfkjafsklfasfsa");
                 output += TypeParser.getFunctionLocalVariableType(fname, getWord(print(variables.get(i)))) + " " + print(variables.get(i));
             }
             //System.err.println(TypeParser.getFunctionLocalVariableType(fname, print(variables.get(i))));

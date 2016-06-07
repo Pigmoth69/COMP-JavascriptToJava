@@ -1,3 +1,4 @@
+import AST.TypeBuilder;
 import com.squareup.javapoet.MethodSpec;
 
 import javax.lang.model.element.Modifier;
@@ -8,7 +9,7 @@ import java.util.Iterator;
 /**
  * Created by danny on 06/06/2016.
  */
-public class MethodBuilder implements Iterable<MethodSpec> {
+public class MethodBuilder extends TypeBuilder implements Iterable<MethodSpec> {
     ArrayList<MethodSpec> methods = new ArrayList<>();
 
     public MethodBuilder(){
@@ -21,25 +22,11 @@ public class MethodBuilder implements Iterable<MethodSpec> {
         return m_method;
     }
     public void addMethods(String name, ArrayList<String> res, ArrayList<String> params, String body, String returnType){
-        Type t = null;
-        switch(returnType){
-            case "int":
-                t = int.class;
-                break;
-            case "String":
-                t = String.class;
-                break;
-            case "double":
-                t = double.class;
-                break;
-            case "Exception":
-                t = Exception.class;
-                break;
-            default:
-        }
+        Type t;
+        t = TypeBuilder.getType(returnType);
         MethodSpec.Builder method = MethodSpec.methodBuilder(name).addModifiers(Modifier.PUBLIC,Modifier.STATIC);
         for(int i = 0; i < params.size();i++){
-            method.addParameter(getType(res.get(i)), params.get(i)); // needs to check the JSON file(it still needs to be created!)
+            method.addParameter(TypeBuilder.getType(res.get(i)), params.get(i)); // needs to check the JSON file(it still needs to be created!)
         }
         if(!returnType.equals("null") || t != null)
             method.returns(t);
@@ -47,25 +34,4 @@ public class MethodBuilder implements Iterable<MethodSpec> {
 
         methods.add(method.build());
     }
-
-    private Type getType(String t){
-        Type tp = null;
-        switch(t){
-            case "int":
-                tp = int.class;
-                break;
-            case "String":
-                tp = String.class;
-                break;
-            case "double":
-                tp = double.class;
-                break;
-            case "Exception":
-                tp = Exception.class;
-                break;
-            default:
-        }
-        return tp;
-    }
-
 }

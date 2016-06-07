@@ -1,12 +1,28 @@
 {
   "global_variables": [
     {
+      "name": "coisas",
+      "type": "String"
+    },
+    {
       "name": "iterations",
       "type": "int"
     },
     {
+      "name":"ar",
+      "type":"int[]"
+    },
+    {
       "name": "num",
       "type": "int"
+    },
+    {
+      "name":"a",
+      "type":"int"
+    },
+    {
+      "name":"b",
+      "type":"int"
     }
   ],
   "functions": [
@@ -27,18 +43,16 @@
       ]
     },
     {
-      "name": "cenas",
+      "name": "startMandelbulb",
       "return_type": "null",
       "args": [
         {
-          "name": "num",
-          "type": "int"
         }
       ],
       "local_variables": [
         {
-          "name": "result",
-          "type": "int"
+          "name": "mandelbulbCanvas",
+          "type": "String"
         }
       ]
     },
@@ -51,6 +65,8 @@
       ],
       "local_variables": [
         {
+          "name": "y",
+          "type": "int"
         }
       ]
     },
@@ -65,6 +81,29 @@
       ],
       "local_variables": [
         {
+        }
+      ]
+    },
+    {
+      "name": "crossProduct",
+      "return_type": "int[]",
+      "args": [
+        {
+          "name": "v1",
+          "type": "int[]"
+        },{
+          "name": "v2",
+          "type": "int[]"
+        }
+      ],
+      "local_variables": [
+        {
+          "name":"oldX",
+          "type":"int[]"
+        },
+        {
+          "name":"oldY",
+          "type":"int[]"
         }
       ]
     }
