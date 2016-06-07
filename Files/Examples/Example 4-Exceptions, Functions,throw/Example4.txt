@@ -1,18 +1,25 @@
+We have implemented Exceptions treatment in java! Javascript only have 3 types of exceptions. But when we convet into java, we convert it to a specific type of exception!
+If the user dont want that exception, he can change it after code generation on the .java file generated!
+
+
+Expected output:
+
 public final class JS2Java {
     public static void main(String[] args) {
         try{
             myroutine();
         }catch(IOException e){
             System.out.println("TypeError");
-        }
-        catch(IndexOutOfBoundsException e){
+
+        }catch(IndexOutOfBoundsException e){
             System.out.println("RangeError");
-        }
-        catch(UnsupportedOperationException e){
+
+        }catch(UnsupportedOperationException e){
             System.out.println("EvalError");
-        }
-        catch(Exception e){
-            throw new logMyErrors(e);
+
+        }catch(Exception e){
+            logMyErrors(e);
+
         }
     }
 

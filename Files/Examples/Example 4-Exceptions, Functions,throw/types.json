@@ -9,8 +9,8 @@
       ],
       "local_variables":[
         {
-        "name":"y",
-        "type":"int"
+          "name":"y",
+          "type":"int"
         }
       ]
     },

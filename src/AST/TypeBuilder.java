@@ -41,6 +41,9 @@ public class TypeBuilder {
             case "char[]":
                 t = getTypeVariable("ArrayList<Character>");
                 break;
+            case "Exception":
+                t = Exception.class;
+                break;
             default:
                t=null;
                 break;
