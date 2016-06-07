@@ -32,6 +32,9 @@ public class MethodBuilder implements Iterable<MethodSpec> {
             case "double":
                 t = double.class;
                 break;
+            case "Exception":
+                t = Exception.class;
+                break;
             default:
         }
         MethodSpec.Builder method = MethodSpec.methodBuilder(name).addModifiers(Modifier.PUBLIC,Modifier.STATIC);
@@ -57,6 +60,9 @@ public class MethodBuilder implements Iterable<MethodSpec> {
                 break;
             case "double":
                 tp = double.class;
+                break;
+            case "Exception":
+                tp = Exception.class;
                 break;
             default:
         }

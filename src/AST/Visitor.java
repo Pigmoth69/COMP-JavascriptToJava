@@ -194,7 +194,7 @@ public class Visitor implements NodeVisitor {
     }
 
     private String print(Block node){
-        if(node.getParent() instanceof AstNode){
+        if(node.getParent() instanceof FunctionNode){
             String func = parseFunctionBlock(node);
             return func;
         }
@@ -342,6 +342,7 @@ public class Visitor implements NodeVisitor {
             if(fname == null)
                 output += ".var. "+print(variables.get(i));
             else {
+                System.err.println("asfkasfkjafsklfasfsa");
                 output += TypeParser.getFunctionLocalVariableType(fname, getWord(print(variables.get(i)))) + " " + print(variables.get(i));
             }
             //System.err.println(TypeParser.getFunctionLocalVariableType(fname, print(variables.get(i))));
@@ -583,7 +584,10 @@ public class Visitor implements NodeVisitor {
     }
 
     public String getWord(String s){
+        System.err.println("adsojnsafojnfsafsakfsaklfsankfsaon");
         String res = new String();
+        System.out.println("strg: ");
+
         for(int i = 0; i < s.length();i++){
             if(s.charAt(i) == ' '|| s.charAt(i)== '=')
                 return res;

@@ -41,6 +41,34 @@
           "type": "int"
         }
       ]
+    },
+    {
+      "name": "myroutine",
+      "return_type": "null",
+      "args": [
+        {
+        }
+      ],
+      "local_variables": [
+        {
+        }
+      ]
+    },
+    {
+      "name": "logMyErrors",
+      "return_type": "null",
+      "args": [
+        {
+          "name": "eeee",
+          "type": "String"
+        }
+      ],
+      "local_variables": [
+        {
+          "name": "result",
+          "type": "int"
+        }
+      ]
     }
   ]
 }

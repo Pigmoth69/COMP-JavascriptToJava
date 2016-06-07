@@ -118,7 +118,7 @@ function rFact(num) {
 console.log(num + "!: "+rFact(5));
 console.log("Iterations: " + iterations);*/
 
-/*
+
 try {
     myroutine(); // may throw three types of exceptions
 } catch (e if e instanceof TypeError) {
@@ -135,9 +135,6 @@ try {
 function myroutine(){
     console.log("myroutine");
 }
-function logMyErrors(e){
+function logMyErrors(eeee){
     console.log("e");
-}*/
-function cenas(){
-    console.log("myroutine");
 }
