@@ -135,6 +135,6 @@ try {
 function myroutine(){
     console.log("myroutine");
 }
-function logMyErrors(eeee){
+function logMyErrors(e){
     console.log("e");
 }

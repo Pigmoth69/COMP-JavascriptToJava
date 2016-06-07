@@ -59,14 +59,12 @@
       "return_type": "null",
       "args": [
         {
-          "name": "eeee",
+          "name": "e",
           "type": "String"
         }
       ],
       "local_variables": [
         {
-          "name": "result",
-          "type": "int"
         }
       ]
     }

@@ -17,7 +17,7 @@ public final class JS2Java {
         System.out.println("myroutine");
     }
 
-    public static void logMyErrors(String eeee) {
+    public static void logMyErrors(String e) {
         System.out.println("e");
     }
 }
