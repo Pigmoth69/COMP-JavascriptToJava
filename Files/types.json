@@ -28,7 +28,7 @@
     },
     {
       "name": "cenas",
-      "return_type": "int",
+      "return_type": "null",
       "args": [
         {
           "name": "num",
