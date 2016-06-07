@@ -1,111 +1,38 @@
 {
   "global_variables": [
     {
-      "name": "coisas",
+      "name": "var1",
+      "type": "int"
+    },
+    {
+      "name": "var2",
+      "type": "double"
+    },
+    {
+      "name": "var3",
       "type": "String"
     },
     {
-      "name": "iterations",
-      "type": "int"
+      "name": "var4",
+      "type": "char"
     },
     {
-      "name":"ar",
-      "type":"int[]"
+      "name": "var5",
+      "type": "int[]"
     },
     {
-      "name": "num",
-      "type": "int"
+      "name": "var6",
+      "type": "double[]"
     },
     {
-      "name":"a",
-      "type":"int"
+      "name": "var7",
+      "type": "String[]"
     },
     {
-      "name":"b",
-      "type":"int"
+      "name": "var8",
+      "type": "char[]"
     }
   ],
   "functions": [
-    {
-      "name": "rFact",
-      "return_type": "int",
-      "args": [
-        {
-          "name": "num",
-          "type": "int"
-        }
-      ],
-      "local_variables": [
-        {
-          "name": "result",
-          "type": "int"
-        }
-      ]
-    },
-    {
-      "name": "startMandelbulb",
-      "return_type": "null",
-      "args": [
-        {
-        }
-      ],
-      "local_variables": [
-        {
-          "name": "mandelbulbCanvas",
-          "type": "String"
-        }
-      ]
-    },
-    {
-      "name": "myroutine",
-      "return_type": "null",
-      "args": [
-        {
-        }
-      ],
-      "local_variables": [
-        {
-          "name": "y",
-          "type": "int"
-        }
-      ]
-    },
-    {
-      "name": "logMyErrors",
-      "return_type": "null",
-      "args": [
-        {
-          "name": "e",
-          "type": "String"
-        }
-      ],
-      "local_variables": [
-        {
-        }
-      ]
-    },
-    {
-      "name": "crossProduct",
-      "return_type": "int[]",
-      "args": [
-        {
-          "name": "v1",
-          "type": "int[]"
-        },{
-          "name": "v2",
-          "type": "int[]"
-        }
-      ],
-      "local_variables": [
-        {
-          "name":"oldX",
-          "type":"int[]"
-        },
-        {
-          "name":"oldY",
-          "type":"int[]"
-        }
-      ]
-    }
   ]
 }

@@ -150,7 +150,7 @@ public class Visitor implements NodeVisitor {
     }
 
     private String print(ElementGet node){
-        return print(node.getTarget())+"["+print(node.getElement())+"]";
+        return print(node.getTarget())+".get("+print(node.getElement())+")";
     }
 
     private String print(ReturnStatement node){
@@ -311,15 +311,12 @@ public class Visitor implements NodeVisitor {
     }
 
     private String print(ArrayLiteral node){
-        String s = "[";
+        String s = "{{\n";
         List<AstNode> nodes = node.getElements();
         for(int i = 0; i < nodes.size();i++){
-            if(i==nodes.size()-1)
-                s+=print(node.getElement(i));
-            else
-                s+=print(node.getElement(i))+",";
+            s+="    add("+print(node.getElement(i))+");\n";
         }
-        s+="]";
+        s+="}}";
         return s;
     }
 

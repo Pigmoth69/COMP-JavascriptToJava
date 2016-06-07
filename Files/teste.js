@@ -141,10 +141,9 @@ function logMyErrors(e){
 }
 */
 
-
+/*
 function startMandelbulb() {
 
-    /* Load the canvas */
     var mandelbulbCanvas = document.getElementById('mandelbulb');
     cHeight = mandelbulbCanvas.height;
     cWidth = mandelbulbCanvas.width;
@@ -152,8 +151,7 @@ function startMandelbulb() {
     context = mandelbulbCanvas.getContext("2d");
     context.fillRect(0, 0, cWidth, cHeight);
 
-    //With a depth of field of 2.0x2.0 we calculate the pixel detail
-    //This isn't using aspect ratio, nor real perspective
+
     pixel = (DEPTH_OF_FIELD)/((cHeight+cWidth)/2);
     halfPixel = pixel/2;
 
@@ -161,4 +159,32 @@ function startMandelbulb() {
     imageData = image.data;
 
     animate();
-}
+}*/
+
+//Simple int variable
+var var1 = 1;
+
+//Simple double variable
+var var2 = 1.256;
+
+//Simple string variable
+var var3 = "simple test string";
+
+//Simple char variable
+var var4 = 'e';
+
+//Simple int[] variable
+var var5 = [1,2,3,4,5,32,23,5,25,235,235,1];
+
+//Simple double[] variable
+var var6 = [1.1,23.2,3.3];
+
+//Simple String[] variable
+var var7 = ["asd","asffaf","asfasg","sfasfasf"];
+
+//Simple char[] variable
+var var8 = ['c','p','h'];
+
+
+
+
