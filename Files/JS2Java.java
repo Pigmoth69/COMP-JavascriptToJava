@@ -3,6 +3,6 @@ public final class JS2Java {
     }
 
     public static int cenas() {
-        null result = 2;
+        int result = 2;
     }
 }

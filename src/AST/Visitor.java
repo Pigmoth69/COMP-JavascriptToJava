@@ -342,9 +342,9 @@ public class Visitor implements NodeVisitor {
             if(fname == null)
                 output += ".var. "+print(variables.get(i));
             else {
-                output += TypeParser.getFunctionLocalVariableType(fname, print(variables.get(i))) + " " + print(variables.get(i));
+                output += TypeParser.getFunctionLocalVariableType(fname, getWord(print(variables.get(i)))) + " " + print(variables.get(i));
             }
-            System.err.println(TypeParser.getFunctionLocalVariableType(fname, print(variables.get(i))));
+            //System.err.println(TypeParser.getFunctionLocalVariableType(fname, print(variables.get(i))));
         }
 
         output += ";";
@@ -580,6 +580,17 @@ public class Visitor implements NodeVisitor {
 
     public ArrayList<Functions> getFunctions(){
         return functions;
+    }
+
+    public String getWord(String s){
+        String res = new String();
+        for(int i = 0; i < s.length();i++){
+            if(s.charAt(i) == ' '|| s.charAt(i)== '=')
+                return res;
+            else
+                res= res+""+s.charAt(i);
+        }
+        return null;
     }
 
 }
