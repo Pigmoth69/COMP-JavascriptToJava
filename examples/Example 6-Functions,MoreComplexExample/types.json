@@ -1,0 +1,38 @@
+{
+  "global_variables": [
+    {
+      "name":"iterations",
+      "type":"int"
+    }
+  ],
+  "functions": [
+    {
+      "name":"startMandelbulb",
+      "return_type":"double",
+      "args":[
+        {
+          "name":"x",
+          "type":"int"
+        }
+      ],
+      "local_variables":[
+        {
+          "name":"mandelbulbCanvas",
+          "type":"String"
+        }
+      ]
+    },
+    {
+      "name":"rFact",
+      "return_type":"int",
+      "args":[
+        {
+          "name":"num",
+          "type":"int"
+        }
+      ],
+      "local_variables":[
+      ]
+    }
+  ]
+}

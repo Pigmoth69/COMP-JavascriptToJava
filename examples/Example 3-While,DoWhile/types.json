@@ -1,0 +1,26 @@
+{
+  "global_variables": [
+    {
+      "name": "cars",
+      "type": "String[]"
+    },
+    {
+      "name": "i",
+      "type": "int"
+    },
+    {
+      "name": "text",
+      "type": "String"
+    },
+    {
+      "name": "text2",
+      "type": "String"
+    },
+    {
+      "name": "i2",
+      "type": "int"
+    }
+  ],
+  "functions": [
+  ]
+}

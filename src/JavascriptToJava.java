@@ -25,11 +25,16 @@ public class JavascriptToJava {
 
     public static void main(String[] args) throws IOException {
 
+        if (args.length != 2) {
+            System.out.println("Usage: java -jar JS2JAVA.jar <javascript-file> <types-json-file>");
+            return;
+        }
+
         System.out.println();
-        TypeParser.init();
+        TypeParser.init(args[1]);
         Visitor visitor = new Visitor();
 
-        try (Reader reader = new FileReader("Files/teste.js")) {
+        try (Reader reader = new FileReader(args[0])) {
 
             AstRoot node = new Parser().parse(reader, "", 1);
             node.visitAll(visitor);
@@ -76,7 +81,7 @@ public class JavascriptToJava {
         JavaFile javaFile  = JavaFile.builder("", js2Java).indent("    ").skipJavaLangImports(true).build();
         System.out.println();
         javaFile.writeTo(System.out);
-        javaFile.writeTo(new File("Files/"));
+        javaFile.writeTo(new File(""));
 
     }
 

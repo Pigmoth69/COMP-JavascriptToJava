@@ -41,33 +41,3 @@ The best thing about this tool is the fact that it is actually prepared to deal 
 
 **CONS: (Identify the most negative aspects of your tool)
 The main flaw of our tool is not being able to automatically determine data types. Right now, the user must always provide an aditional JSON file which specifies all the types for the variablies present in the JavaScript code.
-
-
-///////////////////////////////////////////////////////////////////////////////////////////
-
-You must upload a zip file including:
-
--A folder named “src” with the source code (including the sub-folders you may need for the Java packages, javacc files, and other files);
-
--A folder named “examples” with 5 representative selected test examples that can be used to run your tool; Each example must have a readme.txt file explaining the intention of the example and the expected results.
-
--A folder named “testsuite” with the examples you have used to test your tool and if possible with the makefiles and scripts used.
-
--In the case of Java tools: the jar file for your tool (note that your tool must be able to be executed using: java -jar <name of the jar file.jar> followed by the possible options and by the input/output files.
-
--In the case of command line tools, they must output usage info when executed without arguments.
-Other files needed to test and evaluate your tool.
-The file README.txt (see below the information you should include in this file);
-
-Please, find below an indication of the content we expect in the README.txt file. Note that you need to include a brief description for each topic.
-
-The presentations will be on June 7 and 8, 2016. Groups able to present their projects before that dates should contact us.
-
-The agenda and the information about the presentations will be sent soon.
-Best regards,
-João Cardoso
-Rui Maranhão
-
-
---------------------------------------
-Content for the README.txt file:

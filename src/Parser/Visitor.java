@@ -27,7 +27,7 @@ public class Visitor implements NodeVisitor {
     @Override
     public boolean visit(AstNode node) {
 
-        System.out.println(node.makeIndent(node.depth()) + node.shortName() + " (" + node.getType() + " - " + Token.typeToName(node.getType()) + ")");
+        //System.out.println(node.makeIndent(node.depth()) + node.shortName() + " (" + node.getType() + " - " + Token.typeToName(node.getType()) + ")");
 
         switch (node.shortName()) {
 
@@ -586,7 +586,6 @@ public class Visitor implements NodeVisitor {
     public String getWord(String s){
         //System.err.println("adsojnsafojnfsafsakfsaklfsankfsaon");
         String res = new String();
-        System.out.println("strg: ");
 
         for(int i = 0; i < s.length();i++){
             if(s.charAt(i) == ' '|| s.charAt(i)== '=')

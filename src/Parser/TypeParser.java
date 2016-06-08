@@ -14,7 +14,7 @@ public class TypeParser {
     private static HashMap<String, String> globalVariables;
     private static HashMap<String, TypeParserFunction> functions;
 
-    public static void init() {
+    public static void init(String jsonFile) {
 
         JSONParser parser = new JSONParser();
         globalVariables = new HashMap<>();
@@ -22,7 +22,7 @@ public class TypeParser {
 
         try {
 
-            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("Files/types.json"));
+            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader(jsonFile));
 
             JSONArray jsonGlobalVariables = (JSONArray)jsonObject.get("global_variables");
             JSONArray jsonFunctions = (JSONArray)jsonObject.get("functions");

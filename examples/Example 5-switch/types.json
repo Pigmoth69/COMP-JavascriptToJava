@@ -1,0 +1,11 @@
+{
+  "global_variables": [
+    {
+      "name":"x",
+      "type":"int"
+    }
+  ],
+  "functions": [
+
+  ]
+}
