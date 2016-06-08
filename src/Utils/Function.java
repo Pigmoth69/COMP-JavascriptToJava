@@ -1,17 +1,17 @@
-package AST;
+package Utils;
 
 import java.util.ArrayList;
 
 /**
  * Created by danny on 06/06/2016.
  */
-public class Functions {
+public class Function {
     private String functionName;
     private ArrayList<String> parameters = new ArrayList<>();
     private String body;
     private String returnType;
 
-    public Functions(String functionName,ArrayList<String> parameters,String body,String returnType){
+    public Function(String functionName,ArrayList<String> parameters,String body,String returnType){
         this.functionName=functionName;
         this.parameters=parameters;
         this.body=body;

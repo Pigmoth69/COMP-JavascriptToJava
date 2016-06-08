@@ -1,3 +1,9 @@
+In this ultimate example, we show some implementations.(Function and recursive function, the factorial)
+We give the user the freedom of implement methods that this program cannot convert.
+When something cannot be implemented, we mantain the piece of code as it was on JavaScript and the user needs to implement that code.
+
+Expected output:
+
 public final class JS2Java {
     private static int iterations = 0;
 

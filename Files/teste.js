@@ -141,8 +141,8 @@ function logMyErrors(e){
 }
 */
 
-/*
-function startMandelbulb() {
+
+function startMandelbulb(x) {
 
     var mandelbulbCanvas = document.getElementById('mandelbulb');
     cHeight = mandelbulbCanvas.height;
@@ -157,7 +157,22 @@ function startMandelbulb() {
 
     image = context.getImageData(0, 0, cWidth, cHeight);
     imageData = image.data;
-
+    x = x+ pixel;
     animate();
-}*/
+    return x;
+}
+
+var iterations = 0;
+function rFact(num) {
+    iterations++;
+    if (num == 0) {
+        return 1;
+    } else {
+        return num * rFact( num - 1 );
+    }
+}
+​startMandelbulb();
+console.log(num + "!: "+rFact(5));
+console.log("Iterations: " + iterations);
+
 

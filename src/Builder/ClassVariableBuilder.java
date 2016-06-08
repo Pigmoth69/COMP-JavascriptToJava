@@ -1,4 +1,5 @@
-import AST.TypeBuilder;
+package Builder;
+
 import com.squareup.javapoet.FieldSpec;
 
 import javax.lang.model.element.Modifier;

@@ -1,6 +1,8 @@
-import AST.Functions;
-import AST.TypeParser;
-import AST.Visitor;
+import Utils.Function;
+import Parser.TypeParser;
+import Parser.Visitor;
+import Builder.ClassVariableBuilder;
+import Builder.MethodBuilder;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
@@ -14,7 +16,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 
-public class RhinoTest {
+public class JavascriptToJava {
 
     private static MethodSpec.Builder main = MethodSpec.methodBuilder("main")
             .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
@@ -45,7 +47,7 @@ public class RhinoTest {
         }
 
         MethodBuilder m = new MethodBuilder();
-        ArrayList<Functions> f = visitor.getFunctions();
+        ArrayList<Function> f = visitor.getFunctions();
         for(int i = 0; i < f.size();i++){
             ArrayList<String> res = new ArrayList<>();
             for(int x = 0; x < f.get(i).getParameters().size();x++){

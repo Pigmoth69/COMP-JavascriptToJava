@@ -1,5 +1,6 @@
-package AST;
+package Parser;
 
+import Utils.Function;
 import org.apache.commons.lang3.StringUtils;
 import org.mozilla.javascript.Node;
 import org.mozilla.javascript.Token;
@@ -16,7 +17,7 @@ public class Visitor implements NodeVisitor {
     private int indentLevel = 0;
     private HashMap<String,ArrayList<String>> localVariablesList = new HashMap<>();
     private HashMap<String,ArrayList<String>> classVariableList = new HashMap<>();
-    private ArrayList<Functions> functions = new ArrayList<>();
+    private ArrayList<Function> functions = new ArrayList<>();
     //onde encontrarmos $var = --> neste padrão regex, substituimos pelo tipo de variável que queremos
 
     public String getOutput() {
@@ -163,7 +164,7 @@ public class Visitor implements NodeVisitor {
         ArrayList<String> params = new ArrayList<>();
         for(AstNode n : node.getParams())
             params.add(print(n));
-        functions.add(new Functions(funcName,params,body,"null"));
+        functions.add(new Function(funcName,params,body,"null"));
 
         return "";
     }
@@ -259,7 +260,7 @@ public class Visitor implements NodeVisitor {
         if(node.getExpression() == null) // precisa de ser mudado o ExpressionStatement para aceitar o null !
             output ="    default:";
         else
-            output = "    case "+print(node.getExpression());
+            output = "    case "+print(node.getExpression())+":";
 
 
 
@@ -578,7 +579,7 @@ public class Visitor implements NodeVisitor {
         return classVariableList;
     }
 
-    public ArrayList<Functions> getFunctions(){
+    public ArrayList<Function> getFunctions(){
         return functions;
     }
 

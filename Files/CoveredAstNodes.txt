@@ -5,7 +5,7 @@ ArrayComprehensionLoop
 ArrayLiteral                    -->CHECKED!
 Assignment                      -->CHECKED!
 AstNode                         -->CHECKED!
-AstRoot                         -->???????
+AstRoot                         -->CHECKED!
 Block                           -->CHECKED
 BreakStatement                  -->CHECKED!
 CatchClause                     -->CHECKED!
@@ -15,7 +15,7 @@ ContinueStatement
 DestructuringForm
 DoLoop                          -->CHECKED!
 ElementGet                      -->CHECKED!
-EmptyExpression                 -->?CHECKED!
+EmptyExpression                 -->CHECKED!
 EmptyStatement                  -->CHECKED!
 ErrorCollector
 ErrorNode
@@ -39,8 +39,8 @@ Name                            -->CHECKED!
 NewExpression                   -->CHECKED!
 NodeVisitor
 NumberLiteral                   -->CHECKED!
-ObjectLiteral                   -->CHECKED! -Declarated but not implemented!(at least completely)
-ObjectProperty                  -->CHECKED! -Declarated but not implemented!(at least completely)
+ObjectLiteral                   -->CHECKED!
+ObjectProperty                  -->CHECKED!
 ParenthesizedExpression         -->CHECKED!
 ParseProblem
 PropertyGet                     -->CHECKED!
